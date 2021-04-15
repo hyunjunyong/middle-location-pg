@@ -1,0 +1,2 @@
+curl -X GET "https://dapi.kakao.com/v2/local/search/keyword.json?page=1&size=15&sort=accuracy&query=%EB%85%B8%ED%98%95%EB%8F%99+%EB%A7%9B%EC%A7%91" \
+	-H "Authorization: KakaoAK {8af2bcb5dc18e29890457f5e1d13eb14}"
