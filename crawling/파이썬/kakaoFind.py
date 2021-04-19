@@ -6,7 +6,7 @@ baseUrl = 'https://www.google.com/search?q='
 plusUrl = input('무엇을 검색할까요? :')
 url = baseUrl + quote_plus(plusUrl)
 
-driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong/Desktop/4학년 1학기/캡스톤/파이썬/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong\Documents/GitHub/middle-location-pg.github.io/crawling/파이썬/chromedriver_win32/chromedriver.exe')
 #크롬드라이버위치 절대경로
 driver.get(url)
 

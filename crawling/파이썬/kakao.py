@@ -16,7 +16,7 @@ options.add_argument('headless')
 options.add_argument('lang=ko_KR')
 chromedriver_path = "chromedriver"
 #driver = webdriver.Chrome(os.path.join(os.getcwd(), chromedriver_path), options=options)  # chromedriver 열기
-driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong/Desktop/4학년 1학기/캡스톤/파이썬/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong\Documents/GitHub/middle-location-pg.github.io/crawling/파이썬/chromedriver_win32/chromedriver.exe')
 
 def main():
     global driver, load_wb, review_num
@@ -25,7 +25,7 @@ def main():
     driver.get('https://map.kakao.com/')  # 주소 가져오기
 
     # 검색할 목록
-    place_infos = ['강남 맛집']
+    place_infos = ['제주 시청 맛집']
 
     for i, place in enumerate(place_infos):
         # delay
