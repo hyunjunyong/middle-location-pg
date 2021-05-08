@@ -1,0 +1,14 @@
+.startbtn{
+    /*border: white;*/
+    width: auto;
+    height: auto;
+}
+.cols{
+    display: flex;
+}
+.sidebar{
+
+}
+.ads-input-form{
+    margin-bottom: 5px;
+}
