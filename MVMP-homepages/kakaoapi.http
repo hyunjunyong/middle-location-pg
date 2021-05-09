@@ -1,0 +1,10 @@
+GET https://dapi.kakao.com/v2/local/search/address.json HTTP/1.1
+Content-Type: application/json
+{
+"Authorization":  "KakaoAK 9434c60fa9c26e7c4f5c81801f763f04"
+}
+
+####
+#
+#curl -v -X GET "https://dapi.kakao.com/v2/local/search/address.json" --data-urlencode "query=전북 삼성동 100" -H "Authorization: KakaoAK 9434c60fa9c26e7c4f5c81801f763f04"
+
