@@ -5,7 +5,8 @@ const $btn2 = document.getElementById('button-addon2');
 const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
 
-$btn1.addEventListener("click", searchaddname);
+$btn1.addEventListener("click", ()=>searchaddname($add1));
+$btn2.addEventListener("click", ()=>searchaddname($add2))
 
 //지도
 var mapContainer = document.getElementById('map'),
@@ -18,50 +19,59 @@ var mapContainer = document.getElementById('map'),
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
 //주소 검색시 json출력
-function searchaddname() {
-    const addValue  = $add1.value;
+async function searchaddname($add) {
+    const addValue = $add.value;
     if (addValue === '') {
         alert('주소를 입력하세요');
         return false;
     }
 
-    fetch(`${url}?query=` +  addValue, {headers})
-        .then((res) => res.json())
-        .then(res => {
-            console.log(res);
-        })
-        // .then(json => getAdd(json))
-
+    const respone = await fetch(`${url}?query=${addValue}`, {headers});
+    const data = await respone.json();
+    const json = await data;
+    drawMarker(json);
 }
 
-
-
-// 주소로 좌표를 검색합니다
-function getAdd(data) {
-
-
-    // console.log(posX);
-
+function drawMarker(json) {
+    console.log(json)
+    // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
-    geocoder.addressSearch(data, function(result, status) {
+
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch(json.documents[0].address_name, function(result, status) {
 
         // 정상적으로 검색이 완료됐으면
         if (status === kakao.maps.services.Status.OK) {
+
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
             // 결과값으로 받은 위치를 마커로 표시합니다
             var marker = new kakao.maps.Marker({
                 map: map,
                 position: coords
             });
+
             // 인포윈도우로 장소에 대한 설명을 표시합니다
             var infowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">나의 위치</div>'
             });
             infowindow.open(map, marker);
+
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
         }
     });
 }
 
+//더보기 버튼 클릭시 주소 검색 폼 추가
+const $addressFormBtn = document.querySelector(".address-form-group");
+const $moreBtn = document.getElementById("more-button");
 
+$moreBtn.addEventListener("click", makeForm);
+
+function makeForm(){
+    const div = document.createElement("div");
+    div.setAttribute('className', 'input-group mb-3');
+    div.innerHTML ='<input type="text" id=\'add1\' className="form-control" aria-label="Recipient\'s username"aria-describedby="button-addon2"> <button className="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>'
+    $addressFormBtn.appendChild(div);
+}
