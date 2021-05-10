@@ -73,3 +73,20 @@ $(function() {
 $('#name').focus(function() {
   $('#success').html('');
 });
+var xhr = new XMLHttpRequest();
+var url = 'http://apis.data.go.kr/6500000/jejuBusGnssPosition/viewGnssPosList'; /*URL*/
+var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+'AOvz9ge71qH%2FQ%2FJrVou%2Fp6gLk0u%2FiRGgpCm1EOI4dreCOXCyHLdHLv2ckiCoUzHGqleP1Azg6RzpdvyP%2BhmrKQ%3D%3D'; /*Service Key*/
+queryParams += '&' + encodeURIComponent('serviceKey') + '=' + encodeURIComponent('-'); /**/
+queryParams += '&' + encodeURIComponent('page') + '=' + encodeURIComponent('1'); /**/
+queryParams += '&' + encodeURIComponent('countPerPage') + '=' + encodeURIComponent('10'); /**/
+queryParams += '&' + encodeURIComponent('fromDate') + '=' + encodeURIComponent('20191210'); /**/
+queryParams += '&' + encodeURIComponent('toDate') + '=' + encodeURIComponent('20191210'); /**/
+queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('xml'); /**/
+xhr.open('GET', url + queryParams);
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+        alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+    }
+};
+
+xhr.send('');
