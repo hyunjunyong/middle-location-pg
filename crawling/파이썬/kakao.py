@@ -16,7 +16,7 @@ options.add_argument('headless')
 options.add_argument('lang=ko_KR')
 chromedriver_path = "chromedriver"
 #driver = webdriver.Chrome(os.path.join(os.getcwd(), chromedriver_path), options=options)  # chromedriver 열기
-driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong\Documents/GitHub/middle-location-pg.github.io/crawling/파이썬/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'C:/Users/user/Documents/GitHub/middle-location-pg/crawling/chromedriver_win32/chromedriver.exe')
 
 def main():
     global driver, load_wb, review_num

@@ -11,12 +11,14 @@ from bs4 import BeautifulSoup
 ##########################################################################
 ##################### variable related selenium ##########################
 ##########################################################################
+
 options = webdriver.ChromeOptions()
+
 options.add_argument('headless')
 options.add_argument('lang=ko_KR')
 chromedriver_path = "chromedriver"
 #driver = webdriver.Chrome(os.path.join(os.getcwd(), chromedriver_path), options=options)  # chromedriver 열기
-driver = webdriver.Chrome(executable_path=r'C:/Users/Hyun jun yong\Documents/GitHub/middle-location-pg.github.io/crawling/파이썬/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'C:/Users/user/Documents/GitHub/middle-location-pg/crawling/chromedriver_win32/chromedriver.exe')
 #크롬드라이버위치 절대경로
 
 def main():
@@ -25,7 +27,7 @@ def main():
     driver.implicitly_wait(4)  # 렌더링 될때까지 기다린다 4초
     driver.get('https://map.kakao.com/')  # 주소 가져오기
 
-    search("제주 시청 맛집")
+    search("제주 노형동 맛집")
 
     driver.quit()
     print("finish")
@@ -47,7 +49,7 @@ def search(place):
     place_lists = soup.select('.placelist > .PlaceItem') # 검색된 장소 목록
 
     # 검색된 첫 페이지 장소 목록 크롤링하기
-    crawling(place_lists)
+    #crawling(place_lists)
     search_area.clear()
 
     # 우선 더보기 클릭해서 2페이지
@@ -64,60 +66,73 @@ def search(place):
 
             html = driver.page_source
             soup = BeautifulSoup(html, 'html.parser')
-            place_lists = soup.select('.placelist > .PlaceItem') # 장소 목록 list
+            place = soup.select('#info\.search\.place\.list > li.PlaceItem.clickArea.imgVisible.PlaceItem-ACTIVE > div.head_item.clickArea > strong > a.link_name')
+            star = soup.select('#info\.search\.place\.list > li.PlaceItem.clickArea.imgVisible.PlaceItem-ACTIVE > div.rating.clickArea > span.score > em')
+            #driver.close()
+            return [place,star]
+            #place_lists = soup.select('.placelist > .PlaceItem') # 장소 목록 list
 
-            crawling(place_lists)
+            #crawling(place_lists)
 
     except ElementNotInteractableException:
         print('not found')
     finally:
         search_area.clear()
 
-def crawling(placeLists):
-    for i, place in enumerate(placeLists):
-        menuInfos = getMenuInfo(i, driver)
-        print(menuInfos)
+# def crawling():
+#     crawling = []
+#     html = driver.page_source
+#     soup = BeautifulSoup(html, 'html.parser')
 
-def getMenuInfo(i, driver):
-    # 상세페이지로 가서 메뉴찾기
-    detail_page_xpath = '//*[@id="info.search.place.list"]/li[' + str(i + 1) + ']/div[5]/div[4]/a[1]'
-    driver.find_element_by_xpath(detail_page_xpath).send_keys(Keys.ENTER)
-    driver.switch_to.window(driver.window_handles[-1])  # 상세정보 탭으로 변환
-    sleep(1)
+#     place = soup.select('#info\.search\.place\.list > li.PlaceItem.clickArea.imgVisible.PlaceItem-ACTIVE > div.head_item.clickArea > strong > a.link_name')
+#     star = soup.select('#info\.search\.place\.list > li.PlaceItem.clickArea.imgVisible.PlaceItem-ACTIVE > div.rating.clickArea > span.score > em')
+#     driver.close()
+#     return [place,star]
+# def crawling(placeLists):
+#     for i, place in enumerate(placeLists):
+#         menuInfos = getMenuInfo(i, driver)
+#         print(menuInfos)
 
-    menuInfos = []
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser')
+# def getMenuInfo(i, driver):
+#     # 상세페이지로 가서 메뉴찾기
+#     detail_page_xpath = '//*[@id="info.search.place.list"]/li[' + str(i + 1) + ']/div[5]/div[4]/a[1]'
+#     driver.find_element_by_xpath(detail_page_xpath).send_keys(Keys.ENTER)
+#     driver.switch_to.window(driver.window_handles[-1])  # 상세정보 탭으로 변환
+#     sleep(1)
 
-    # 메뉴의 3가지 타입
-    menuonlyType = soup.select('.cont_menu > .list_menu > .menuonly_type')
-    nophotoType = soup.select('.cont_menu > .list_menu > .nophoto_type')
-    photoType = soup.select('.cont_menu > .list_menu > .photo_type')
+#     menuInfos = []
+#     html = driver.page_source
+#     soup = BeautifulSoup(html, 'html.parser')
 
-    if len(menuonlyType) != 0:
-        for menu in menuonlyType:
-            menuInfos.append(_getMenuInfo(menu))
-    elif len(nophotoType) != 0:
-        for menu in nophotoType:
-            menuInfos.append(_getMenuInfo(menu))
-    else:
-        for menu in photoType:
-            menuInfos.append(_getMenuInfo(menu))
+#     # 메뉴의 3가지 타입
+#     menuonlyType = soup.select('.cont_menu > .list_menu > .menuonly_type')
+#     nophotoType = soup.select('.cont_menu > .list_menu > .nophoto_type')
+#     photoType = soup.select('.cont_menu > .list_menu > .photo_type')
 
-    driver.close()
-    driver.switch_to.window(driver.window_handles[0])  # 검색 탭으로 전환
+#     if len(menuonlyType) != 0:
+#         for menu in menuonlyType:
+#             menuInfos.append(_getMenuInfo(menu))
+#     elif len(nophotoType) != 0:
+#         for menu in nophotoType:
+#             menuInfos.append(_getMenuInfo(menu))
+#     else:
+#         for menu in photoType:
+#             menuInfos.append(_getMenuInfo(menu))
 
-    return menuInfos
+#     driver.close()
+#     driver.switch_to.window(driver.window_handles[0])  # 검색 탭으로 전환
 
-def _getMenuInfo(menu):
-    menuName = menu.select('.info_menu > .loss_word')[0].text
-    menuPrices = menu.select('.info_menu > .price_menu')
-    menuPrice = ''
+#     return menuInfos
 
-    if len(menuPrices) != 0:
-        menuPrice =  menuPrices[0].text.split(' ')[1]
+# def _getMenuInfo(menu):
+#     menuName = menu.select('.info_menu > .loss_word')[0].text
+#     menuPrices = menu.select('.info_menu > .price_menu')
+#     menuPrice = ''
 
-    return [menuName, menuPrice]
+#     if len(menuPrices) != 0:
+#         menuPrice =  menuPrices[0].text.split(' ')[1]
+
+#     return [menuName, menuPrice]
 
 if __name__ == "__main__":
     main()
