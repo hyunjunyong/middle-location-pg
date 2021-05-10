@@ -22,3 +22,13 @@
     bottom: 0;
     margin-bottom: 10px;
 }
+.nowcontainer{
+    display: flex;
+    justify-content: center;
+}
+.nowbtn {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+
+}
