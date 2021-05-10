@@ -16,11 +16,9 @@
   <link href="css/clean-blog.min.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
 <style>
-  .post-preview{
-    text-align:center;
-    display:inline;
 
-  }
+  .post-preview-left { position:relative; float:left; width:50%; height:300px; display: flex; justify-content: center; align-items: center; }
+  .post-preview-right { position:relative; float:right; width:50%; height:300px; display: flex; justify-content: center; align-items: center; }
 </style>
 </head>
 
@@ -59,20 +57,21 @@
   </header>
 
   <!--Main Content-->
-  <div class="post-preview">
-    <a href="keyword.html">
-      <h2 class="post-title">
-        키워드로 장소 추천 받기
-      </h2>
-    </a>
-  </div>
-  <hr>
-  <div class="post-preview">
-    <a href="category.html">
-      <h2 class="post-title">
-        카테고리로 장소 추천 받기
-      </h2>
-    </a>
+  <div class="post-preview-out">
+    <div class="post-preview-left">
+      <a href="keyword.html">
+        <h3 class="post-title">
+          키워드로 장소 추천 받기
+        </h3>
+      </a>
+    </div>
+    <div class="post-preview-right">
+      <a href="category.html">
+        <h3 class="post-title">
+          카테고리로 장소 추천 받기
+        </h3>
+      </a>
+    </div>
   </div>
   <script src="js/category.js"></script>
   <script src="js/keyword.js"></script>
