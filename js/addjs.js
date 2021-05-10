@@ -6,7 +6,7 @@ const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
 
 $btn1.addEventListener("click", ()=>searchaddname($add1));
-$btn2.addEventListener("click", ()=>searchaddname($add2))
+$btn2.addEventListener("click", ()=>searchaddname($add2));
 
 //지도
 var mapContainer = document.getElementById('map'),
