@@ -1,0 +1,24 @@
+.startbtn{
+    /*border: white;*/
+    width: auto;
+    height: auto;
+}
+.cols{
+    display: flex;
+}
+.sidebar{
+
+}
+.ads-input-form{
+    margin-bottom: 5px;
+}
+.btn-outline-secondary{
+    width: auto;
+    height: 40px;
+}
+
+.btn-success{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
