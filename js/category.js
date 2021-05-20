@@ -6,7 +6,7 @@ var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}),
  
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(33.498528071364554, 126.53022090514855), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     };  
 
