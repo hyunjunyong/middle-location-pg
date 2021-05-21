@@ -121,15 +121,17 @@ function nowPosition() {
     }
 
 //더보기 버튼 클릭시 주소 검색 폼 추가
-    const $addressFormBtn = document.querySelector(".address-form-group");
-    const $moreBtn = document.getElementById("more-button");
+const $addressFormBtn = document.querySelector(".address-form-group");
+const $moreBtn = document.getElementById("more-button");
+$moreBtn.addEventListener("click", makeForm);
 
-    $moreBtn.addEventListener("click", makeForm);
-
-    function makeForm() {
-        const div = document.createElement("div");
-        div.setAttribute('className', 'input-group mb-3');
-        div.innerHTML = '<input type="text" id=\'add1\' className="form-control" aria-label="Recipient\'s username"aria-describedby="button-addon2"> <button className="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>'
-        $addressFormBtn.appendChild(div);
-    }
+function makeForm() {
+    const div = document.createElement("div");
+    div.setAttribute('class', 'input-group mb-3');
+    div.innerHTML = '<input type="text" class="form-control" aria-label="Recipient\'s username"aria-describedby="button-addon2"> <button class="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>'
+    $addressFormBtn.appendChild(div);
+    const $addedInput = document.querySelector(".input-group:last-child.input-group input");
+    const $addedSearchBtn = document.querySelector(".input-group:last-child.input-group button");
+    $addedSearchBtn.addEventListener("click", ()=>searchaddname($addedInput));
+}
 
