@@ -1,3 +1,5 @@
+import getCenter from "./getCenter.js";
+
 const $add1 = document.getElementById('add1');
 const $add2 = document.getElementById('add2');
 const $btn1 = document.getElementById('button-addon1');
@@ -150,9 +152,29 @@ function savePosition(adrress){
     localStorage.setItem("positions", JSON.stringify(isExist))
 }
 
-$midBtn = document.getElementById("mid-btn");
-$midBtn.addEventListener("click", getPositions);
+const $midBtn = document.getElementById("mid-btn");
+$midBtn.addEventListener("click", ()=> {
+    const centerPosition = getCenter(getPositions());
+    let markerPosition  = new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat);
+
+// 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+// 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">중간위치</div>'
+    });
+    infowindow.open(map, marker);
+
+    //중간위치 마커로 지도 이동
+    map.setCenter(new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat));
+});
 
 function getPositions(){
-    return localStorage.getItem('positions');
+    return JSON.parse(localStorage.getItem('positions'));
 }
