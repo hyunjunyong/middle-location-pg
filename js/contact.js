@@ -30,4 +30,5 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     var resultDiv = document.getElementById('clickLatlng'); 
     resultDiv.innerHTML = message;
     
+    console.log(message)
 });
