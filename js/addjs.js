@@ -14,6 +14,10 @@ $btn2.addEventListener("click", ()=>searchaddname($add2));
 $nowposition.addEventListener("click", nowPosition());
 
 
+// onbeforeunload = function (e) {
+//     localStorage.setItem("positions", "[]");
+// }
+
 function nowPosition() {
     if (navigator.geolocation) {
 
@@ -139,7 +143,7 @@ function makeForm() {
     const $addedSearchBtn = document.querySelector(".input-group:last-child.input-group button");
     $addedSearchBtn.addEventListener("click", ()=>searchaddname($addedInput));
 }
-
+//로컬스토리지에 위도경도 저장하기
 function savePosition(adrress){
 
     let isExist = localStorage.getItem("positions");
@@ -177,4 +181,10 @@ $midBtn.addEventListener("click", ()=> {
 
 function getPositions(){
     return JSON.parse(localStorage.getItem('positions'));
+}
+
+
+window.onbeforeunload = function deleteLocalstorage(){
+    localStorage.removeItem('positions');
+    window.location.reload();
 }
