@@ -48,8 +48,11 @@
     <div class="map_wrap">
       <div id="map" style="width:90%;height:400px;position:relative;overflow:hidden;"></div>
       <div id="clickLatlng"></div>
-      <div id="locate"></div>
       <!-- 중간지점을 알려줌-->
+      <div id="locate"></div>
+      <!-- 중간지점 주소의 정류장을 알려줌 -->
+      <!-- <button id = "bus_click" onclick="click()">버스 경로 찾기</button> -->
+
       <div id="bus"></div>
       <!-- 버스 노선 및 경로 알려줌 -->
     </div>
@@ -68,7 +71,8 @@
   <script src="js/clean-blog.min.js"></script>
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>
-  <script type="text/javascript" src="/js/contact.js" charset="utf-8"></script>
+  <script type="module" src="/js/contact.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/json/bus_station.json"></script>
 </body>
 
 </html>

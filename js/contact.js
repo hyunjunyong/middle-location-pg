@@ -1,34 +1,58 @@
-var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-        level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+import getCenter from "./getCenter.js";
+
+const centerPosition = getCenter(getPositions());
+let markerPosition = new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat);
+let middlelon = centerPosition.lon;
+let middlelat = centerPosition.lat;
+
+var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+    mapOption = {
+        center: new kakao.maps.LatLng(middlelon, middlelat), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
     };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+var map = new kakao.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 
-// Áöµµ¸¦ Å¬¸¯ÇÑ À§Ä¡¿¡ Ç¥ÃâÇÒ ¸¶Ä¿ÀÔ´Ï´Ù
-var marker = new kakao.maps.Marker({ 
-    // Áöµµ Áß½ÉÁÂÇ¥¿¡ ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù 
-    position: map.getCenter() 
-}); 
-// Áöµµ¿¡ ¸¶Ä¿¸¦ Ç¥½ÃÇÕ´Ï´Ù
-marker.setMap(map);
+function bus() {
+    function getAddr(lon, lat) {
+        let geocoder = new kakao.maps.services.Geocoder();
+        let coord = new kakao.maps.LatLng(middlelon, middlelat);
+        let callback = function (result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                console.log(result);
+                // ì§€ë„ë¥¼ í´ë¦­í•œ ìœ„ì¹˜ì— í‘œì¶œí•  ë§ˆì»¤ì…ë‹ˆë‹¤
+                var marker = new kakao.maps.Marker({
+                    // ì§€ë„ ì¤‘ì‹¬ì¢Œí‘œì— ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤ 
+                    position: new kakao.maps.LatLng(middlelon, middlelat)
+                });
+                // ì§€ë„ì— ë§ˆì»¤ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
+                marker.setMap(map);
+                var str = result[0].address.address_name.fontcolor("red").bold().fontsize(4);
+                var message = "ì¤‘ê°„ ê±°ë¦¬ì˜ ì£¼ì†ŒëŠ” " + str + " ì…ë‹ˆë‹¤.";
 
-// Áöµµ¿¡ Å¬¸¯ ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
-// Áöµµ¸¦ Å¬¸¯ÇÏ¸é ¸¶Áö¸· ÆÄ¶ó¹ÌÅÍ·Î ³Ñ¾î¿Â ÇÔ¼ö¸¦ È£ÃâÇÕ´Ï´Ù
-kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+                var resultDiv = document.getElementById('clickLatlng');
+                resultDiv.innerHTML = message;
+            }
+        };
+        geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+
+
+    }
+    getAddr(middlelon, middlelat);
+}
+function getPositions() {
+    return JSON.parse(localStorage.getItem('positions'));
+}
+
+bus();
+
+
+$.getJSON("../json/bus_station.json", function(data) {
+    for(var key in data){
+        if(middlelon == data[key].ìœ„ë„ && middlelat == data[key].ê²½ë„)
+        {
+            console.log(data[key].ì •ë¥˜ì†Œëª…);
+        }
+    }
     
-    // Å¬¸¯ÇÑ À§µµ, °æµµ Á¤º¸¸¦ °¡Á®¿É´Ï´Ù 
-    var latlng = mouseEvent.latLng; 
-    
-    // ¸¶Ä¿ À§Ä¡¸¦ Å¬¸¯ÇÑ À§Ä¡·Î ¿Å±é´Ï´Ù
-    marker.setPosition(latlng);
-    
-    var message = 'Å¬¸¯ÇÑ À§Ä¡ÀÇ À§µµ´Â ' + latlng.getLat() + ' ÀÌ°í, ';
-    message += '°æµµ´Â ' + latlng.getLng() + ' ÀÔ´Ï´Ù';
-    
-    var resultDiv = document.getElementById('clickLatlng'); 
-    resultDiv.innerHTML = message;
-    
-    console.log(message)
 });
