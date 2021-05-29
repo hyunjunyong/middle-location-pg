@@ -7,6 +7,8 @@ const $btn2 = document.getElementById('button-addon2');
 const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
 const $nowposition = document.getElementById('nowposition');
+const url_road = "https://api.openrouteservice.org/v2/directions/driving-car"
+const headers_road = {Authorization: "api_key=5b3ce3597851110001cf6248e05cbd3503a24fa3a5707b98dff59732"}
 
 
 $btn1.addEventListener("click", ()=>searchaddname($add1));
@@ -20,10 +22,8 @@ $nowposition.addEventListener("click", nowPosition());
 
 function nowPosition() {
     if (navigator.geolocation) {
-
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
         navigator.geolocation.getCurrentPosition(function (position) {
-
             var currentlat = position.coords.latitude, // 위도
                 currentlon = position.coords.longitude; // 경도
 
@@ -32,9 +32,6 @@ function nowPosition() {
 
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
-
-
-
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -188,3 +185,11 @@ window.onbeforeunload = function deleteLocalstorage(){
     localStorage.removeItem('positions');
     window.location.reload();
 }
+
+request.open(
+    "GET",
+    "&start=126.53854779634501,%2033.4989558825918&end=126.54119874110302,33.4926791525441"
+);
+
+
+const response_road = await fetch(`{road_url}?`)
