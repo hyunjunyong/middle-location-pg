@@ -52,9 +52,12 @@ bus();
 //api 작동
 var request = new XMLHttpRequest();
 var buslocation = document.querySelector("#bus");
+const positions = JSON.parse(localStorage.getItem('positions'));
+const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248e05cbd3503a24fa3a5707b98dff59732&start=${positions[0]["La"]},${positions[0]["Ma"]}&end=${positions[1]["La"]},${positions[1]["Ma"]}`;
+console.log(url);
 request.open(
   "GET",
-  "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248e05cbd3503a24fa3a5707b98dff59732&start=126.53854779634501,%2033.4989558825918&end=126.54119874110302,33.4926791525441"
+  url
 );
 
 request.setRequestHeader(
@@ -67,33 +70,40 @@ request.onreadystatechange = function () {
     //console.log("Status:", this.status);
     // buslocation.innerHTML = this.responseText;
     // console.log("Headers:", this.getAllResponseHeaders());
+
     var data = this.responseText;
     var dataparse = JSON.parse(data);
-    var datareverse = new Array();
+    console.log(dataparse);
+    var datareverse = [];
     for (
       var i = 0;
       i < dataparse["features"][0]["geometry"]["coordinates"].length;
       i++
     ) {
       datareverse[i] = [
-        ...dataparse["features"][0]["geometry"]["coordinates"][i],
+        // ...dataparse["features"][0]["geometry"]["coordinates"][i],
+          parseFloat(dataparse["features"][0]["geometry"]["coordinates"][i][0]),
+          parseFloat(dataparse["features"][0]["geometry"]["coordinates"][i][1])
       ]
-        .reverse()
-        .join(",");
+        .reverse();
+        // .join(",");
     }
-    var datastring = JSON.stringify(datareverse).replace(/\"/gi, "");
+    // var datastring = JSON.stringify(datareverse).replace(/\"/gi, "");
     console.log(datareverse);
     // 선좌표
-    var linePath = new Array();
-    for (var i = 0; i < datareverse.length - 1; i++) {
-      linePath.push(new kakao.maps.LatLng(datareverse.slice(i, i + 1)));
+    function getLinePath(){
+      var linePath =[];
+      for (var i = 0; i < datareverse.length; i++) {
+        linePath.push(new kakao.maps.LatLng(datareverse[i][0], datareverse[i][1]));
+      }
+      return linePath
     }
-    console.log(linePath);
+
     // 지도에 표시할 선을 생성합니다
     var polyline = new kakao.maps.Polyline({
-      path: linePath, // 선을 구성하는 좌표배열 입니다
+      path: getLinePath(), // 선을 구성하는 좌표배열 입니다
       strokeWeight: 5, // 선의 두께 입니다
-      strokeColor: "#FFAE00", // 선의 색깔입니다
+      strokeColor: "#ff0033", // 선의 색깔입니다
       strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
       strokeStyle: "solid", // 선의 스타일입니다
     });
