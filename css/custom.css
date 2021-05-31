@@ -3,11 +3,8 @@
     width: auto;
     height: auto;
 }
-.cols{
+.cols {
     display: flex;
-}
-.sidebar{
-
 }
 .ads-input-form{
     margin-bottom: 5px;

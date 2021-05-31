@@ -4,6 +4,7 @@ const $add1 = document.getElementById('add1');
 const $add2 = document.getElementById('add2');
 const $btn1 = document.getElementById('button-addon1');
 const $btn2 = document.getElementById('button-addon2');
+const $reset = document.getElementById('restart-btn');
 const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
 const $nowposition = document.getElementById('nowposition');
@@ -155,6 +156,7 @@ function savePosition(adrress) {
 const $midBtn = document.getElementById("mid-btn");
 $midBtn.addEventListener("click", () => {
     const centerPosition = getCenter(getPositions());
+    // localStorage.setItem("centerPosition", centerPosition);
     let markerPosition = new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat);
 
     // 마커를 생성합니다
@@ -177,4 +179,8 @@ $midBtn.addEventListener("click", () => {
 
 function getPositions() {
     return JSON.parse(localStorage.getItem('positions'));
+}
+
+function reset(){
+
 }
