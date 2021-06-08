@@ -189,12 +189,11 @@ function searchBusLaneAJAX() {
 
   xhr.open("GET", url, true);
   xhr.send();
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = ()=> {
 
     if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log( JSON.parse(xhr.responseText) );
-      callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
-
+      const bus = JSON.parse(xhr.responseText);
+      console.log(bus);
     }
   }
 }
