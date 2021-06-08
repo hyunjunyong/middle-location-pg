@@ -190,7 +190,7 @@ function searchBusLaneAJAX() {
   let ex = middlelon;
   let ey = middlelat;
   let xhr = new XMLHttpRequest();
-  let url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+sx+"&SY="+sy+"&EX="+ex+"&EY="+ey+"apiKey=LRP8InDDBglP/04OezKdyA";
+  let url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+sx+"&SY="+sy+"&EX="+ex+"&EY="+ey+"&apiKey=LRP8InDDBglP/04OezKdyA";
 
   xhr.open("GET", url, true);
   xhr.send();
