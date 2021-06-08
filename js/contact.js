@@ -184,20 +184,16 @@ function makeOutListener(infowindow) {
 }
 //버스 api 테스트
 function searchBusLaneAJAX() {
-  var xhr = new XMLHttpRequest();
-  var url = `https://api.odsay.com/v1/api/searchPubTransPathT?lang=0&SX=${positions[0]["Ma"]}&SY=${positions[0]["La"]}&EX=${middlelon}&EY=${middlelat}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
+  let xhr = new XMLHttpRequest();
+  let url = `https://api.odsay.com/v1/api/searchPubTransPathT?lang=0&SX=${positions[0]["Ma"]}&SY=${positions[0]["La"]}&EX=${middlelon}&EY=${middlelat}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
 
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = function() {
 
     if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log( xhr.responseText )
-      var resultObj = JSON.parse(xhr.responseText);
-      console.log(resultObj.result);
-      //
-      // var str = "";
-      // document.getElementById("resultDiv").innerHTML = str;
+      console.log( JSON.parse(xhr.responseText) );
+      callMapObjApiAJAX((JSON.parse(xhr.responseText))["result"]["path"][0].info.mapObj);
 
     }
   }
