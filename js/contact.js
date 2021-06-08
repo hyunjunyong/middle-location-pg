@@ -183,16 +183,12 @@ function makeOutListener(infowindow) {
   };
 }
 
-const sx = positions[0]["Ma"];
-const sy = positions[0]["La"];
-const ex = middlelon;
-const ey = middlelat;
 //버스 api 테스트
 function searchBusLaneAJAX() {
 
   let xhr = new XMLHttpRequest();
-  let url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+sx+"&SY="+sy+"&EX="+ex+"&EY="+ey+"&apiKey=LRP8InDDBglP/04OezKdyA";
-
+  let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[0]["La"]}&SY=${positions[0]["Ma"]}&EX=${middlelon}&EY=${middlelat}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
+  console.log(positions[0]["Ma"], positions[0]["La"],middlelon,middlelat);
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = ()=> {
