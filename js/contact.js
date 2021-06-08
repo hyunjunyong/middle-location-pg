@@ -183,9 +183,6 @@ function makeOutListener(infowindow) {
   };
 }
 //버스 api 테스트
-const $searchBus = document.getElementsByClassName(searchBusLaneAJAX);
-$searchBus.addEventListener("click",()=>searchBusLaneAJAX());
-
 function searchBusLaneAJAX() {
   var xhr = new XMLHttpRequest();
   var url = `https://api.odsay.com/v1/api/searchPubTransPathT?lang=0&SX=${positions[0]["Ma"]}&SY=${positions[0]["La"]}&EX=${middlelon}&EY=${middlelat}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
@@ -195,11 +192,12 @@ function searchBusLaneAJAX() {
   xhr.onreadystatechange = function() {
 
     if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log( xhr.responseText )
       var resultObj = JSON.parse(xhr.responseText);
       console.log(resultObj.result);
-
-      var str = "";
-      document.getElementById("resultDiv").innerHTML = str;
+      //
+      // var str = "";
+      // document.getElementById("resultDiv").innerHTML = str;
 
     }
   }
