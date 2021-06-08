@@ -185,17 +185,41 @@ function makeOutListener(infowindow) {
 
 //버스 api 테스트
 function searchBusLaneAJAX() {
-
   let xhr = new XMLHttpRequest();
   let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[0]["La"]}&SY=${positions[0]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
-  console.log(positions[0]["Ma"], positions[0]["La"],middlelon,middlelat);
+
   xhr.open("GET", url, true);
   xhr.send();
-  xhr.onreadystatechange = ()=> {
+  xhr.onreadystatechange = () => {
 
     if (xhr.readyState == 4 && xhr.status == 200) {
-      const bus = JSON.parse(xhr.responseText);
-      console.log(bus);
+      const busPath = JSON.parse(xhr.responseText);
+      console.log(busPath);
+      console.log(busPath.result.path[0].subPath[1].lane[0][0]);
+
+      //     const busList = [];
+      //       let linePath = [];
+      //       for (var i = 0; i < data.result.length; i++) {
+      //         linePath.push(
+      //             new kakao.maps.LatLng(datareverse[i][0], datareverse[i][1])
+      //         );
+      //       }
+      //     }
+      //
+      //     // 지도에 표시할 선을 생성합니다
+      //     var polyline = new kakao.maps.Polyline({
+      //       path: getLinePath(), // 선을 구성하는 좌표배열 입니다
+      //       strokeWeight: 5, // 선의 두께 입니다
+      //       strokeColor: '#75B8FA', // 선의 색깔입니다
+      //       strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+      //       strokeStyle: "solid", // 선의 스타일입니다
+      //     });
+      //
+      //     // 지도에 선을 표시합니다
+      //     polyline.setMap(map);
+      //   }
+      //   }
+      // }
     }
   }
 }
