@@ -182,10 +182,15 @@ function makeOutListener(infowindow) {
     infowindow.close();
   };
 }
+
 //버스 api 테스트
 function searchBusLaneAJAX() {
+  let sx = positions[0]["Ma"];
+  let sy = positions[0]["La"];
+  let ex = middlelon;
+  let ey = middlelat;
   let xhr = new XMLHttpRequest();
-  let url = `https://api.odsay.com/v1/api/searchPubTransPathT?lang=0&SX=126.53164810318599&SY=33.49786286940238&EX=126.56429389472&EY=33.4572369752041&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
+  let url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+sx+"&SY="+sy+"&EX="+ex+"&EY="+ey+"apiKey=LRP8InDDBglP/04OezKdyA";
 
   xhr.open("GET", url, true);
   xhr.send();
