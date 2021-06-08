@@ -193,9 +193,10 @@ function searchBusLaneAJAX() {
   xhr.onreadystatechange = () => {
 
     if (xhr.readyState == 4 && xhr.status == 200) {
-      const busPath = JSON.parse(xhr.responseText);
-      console.log(busPath);
-      console.log(busPath.result.path[0].subPath[1].lane[0][0]);
+      const data = xhr.responseText;
+      console.log(data);
+      const busPath = data.json();
+      console.log(busPath.result.path[0].subPath[1]);
 
       //     const busList = [];
       //       let linePath = [];
