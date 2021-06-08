@@ -6,6 +6,7 @@ const positions = getPositions();
 function getPositions() {
     return JSON.parse(localStorage.getItem("positions"));
 }
+
 //positions의 중간위치 반환
 const centerPosition = getCenter(positions);
 let markerPosition = [
@@ -18,6 +19,7 @@ let markerPosition = [
 positions.forEach((position)=>{
     markerPosition.push({title: "시작위치", latlng: new kakao.maps.LatLng(position["Ma"], position["La"])})
 })
+
 // console.log(positions[0]["Ma"], positions[0]["La"]);
 let middlelon = centerPosition.lon;
 let middlelat = centerPosition.lat;
@@ -50,7 +52,18 @@ function bus() {
                     title: markerPosition[0].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                 });
                 //인포윈도우와 마커 그리기
-                infowindow.open(map, marker);
+                kakao.maps.event.addListener(
+                    marker,
+                    "mouseover",
+                    makeOverListener(map, marker, infowindow)
+                );
+                kakao.maps.event.addListener(
+                    marker,
+                    "mouseout",
+                    makeOutListener(infowindow)
+                );
+                //인포윈도우와 마커 그리기
+                // infowindow.open(map, marker);
 
                 //출발지점 마커 객체 생성
                 for (var i = 1; i < markerPosition.length; i++) {
@@ -60,22 +73,31 @@ function bus() {
                         position: markerPosition[i].latlng, // 마커를 표시할 위치
                         title: markerPosition[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                     });
+                    var infowindow1 = new kakao.maps.InfoWindow({
+                        position: markerPosition[i].latlng,
+                        content: `<div style="padding: 5px;">${markerPosition[i].title}</div>`,
+                    });
+                    var infowindow1 = new kakao.maps.InfoWindow({
+                        position: markerPosition[i].latlng,
+                        content: `<div style="padding: 5px;">${markerPosition[i].title}</div>`,
+                    });
+
+                    kakao.maps.event.addListener(
+                        startmarker,
+                        "mouseover",
+                        makeOverListener(map, startmarker, infowindow1)
+                    );
+                    kakao.maps.event.addListener(
+                        startmarker,
+                        "mouseout",
+                        makeOutListener(infowindow1)
+                    );
+
                 }
+
                 //출발지점 마커 그리기
                 startmarker.setMap(map);
-                // var marker = new kakao.maps.Marker({
-                //   // 지도 중심좌표에 마커를 생성합니다
-                //   position: markerPosition,
-                // });
-                // // 지도에 마커를 표시합니다
-                // marker.setMap(map);
 
-                // var infowindow = new kakao.maps.InfoWindow({
-                //   content:
-                //     '<div style="width:150px;text-align:center;padding:6px 0;">도착위치</div>',
-                // });
-
-                // infowindow.open(map, marker);
 
                 var str = result[0].address.address_name
                     .fontcolor("red")
@@ -97,7 +119,7 @@ function bus() {
 bus();
 //api 작동
 for (let i=0;i<positions.length;i++){
-    const colors = ["#ff0033", "#37ff00", "#00ffea", "#a600ff"];
+    const colors = ["#ff0033", "#37ff00", "#00ffea", "#eec800","#EEC800FF","#3453D7FF"];
     let selecetedColor = colors[i];
     var request = new XMLHttpRequest();
     var buslocation = document.querySelector("#bus");
@@ -159,4 +181,18 @@ for (let i=0;i<positions.length;i++){
         }
     };
     request.send();
+}
+
+//mouseover
+function makeOverListener(map, marker, infowindow) {
+    return function () {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다
+function makeOutListener(infowindow) {
+    return function () {
+        infowindow.close();
+    };
 }
