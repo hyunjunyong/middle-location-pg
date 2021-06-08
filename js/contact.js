@@ -1,4 +1,5 @@
 import getCenter from "./getCenter.js";
+import searchBusLaneAJAX from "./bus";
 
 //각자의 위치 값 배열
 const positions = getPositions();
@@ -156,14 +157,13 @@ for (let i=0;i<positions.length;i++){
 
             // 선좌표
             function getLinePath() {
-                debugger
                 let linePath = [];
                 for (var i = 0; i < datareverse.length; i++) {
                     linePath.push(
                         new kakao.maps.LatLng(datareverse[i][0], datareverse[i][1])
                     );
                 }
-                console.log(linePath);
+                // console.log(linePath);
                 return linePath;
             }
 
@@ -196,3 +196,4 @@ function makeOutListener(infowindow) {
         infowindow.close();
     };
 }
+searchBusLaneAJAX();

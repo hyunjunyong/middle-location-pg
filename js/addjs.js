@@ -1,4 +1,5 @@
 import getCenter from "./getCenter.js";
+import searchBusLaneAJAX from "./bus";
 
 const $add1 = document.getElementById('add1');
 const $add2 = document.getElementById('add2');
@@ -7,13 +8,10 @@ const $btn2 = document.getElementById('button-addon2');
 const $reset = document.getElementById('restart-btn');
 const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
-const $nowposition = document.getElementById('nowposition');
 
 
 $btn1.addEventListener("click", () => searchaddname($add1));
 $btn2.addEventListener("click", () => searchaddname($add2));
-// $nowposition.addEventListener("click", nowPosition());
-
 
 
 //지도
@@ -129,6 +127,4 @@ function getPositions() {
     return JSON.parse(localStorage.getItem('positions'));
 }
 
-function reset(){
-
-}
+searchBusLaneAJAX();
