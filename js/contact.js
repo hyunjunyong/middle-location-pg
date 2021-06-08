@@ -185,7 +185,7 @@ function makeOutListener(infowindow) {
 
 function searchBusLaneAJAX() {
   var xhr = new XMLHttpRequest();
-  var url = "https://api.odsay.com/v1/api/searchBusLane?busNo=360&CID=8000&apiKey={LRP8InDDBglP/04OezKdyA}";
+  var url = "https://api.odsay.com/v1/api/searchBusLane?busNo=360&CID=8000&apiKey=LRP8InDDBglP/04OezKdyA";
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = function() {
