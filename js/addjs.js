@@ -29,8 +29,6 @@ function nowPosition() {
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
 
-
-
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
