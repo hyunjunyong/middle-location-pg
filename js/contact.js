@@ -182,6 +182,9 @@ function makeOutListener(infowindow) {
     infowindow.close();
   };
 }
+//버스 api 테스트
+const $searchBus = document.getElementsByClassName(searchBusLaneAJAX);
+$searchBus.addEventListener("click",()=>searchBusLaneAJAX());
 
 function searchBusLaneAJAX() {
   var xhr = new XMLHttpRequest();
