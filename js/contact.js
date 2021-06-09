@@ -186,7 +186,7 @@ function makeOutListener(infowindow) {
 //버스 api 테스트
 function searchBusLaneAJAX() {
   let xhr = new XMLHttpRequest();
-  let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[0]["La"]}&SY=${positions[0]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=2&apiKey=LRP8InDDBglP/04OezKdyA`;
+  let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[0]["La"]}&SY=${positions[0]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=0&apiKey=LRP8InDDBglP/04OezKdyA`;
 
   xhr.open("GET", url, true);
   xhr.send();
