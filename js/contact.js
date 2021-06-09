@@ -198,14 +198,13 @@ function searchBusLaneAJAX() {
 
       console.log(busPath);
       let busPathname_array = [];
+      //가는 버스들 번호 -> 노선id로 버스마다 가는 경로들 가져오기
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         const busPathname =  busPath.result.path[0].subPath[1].lane[i]['busNo'];
         busPathname_array.push(busPathname);
       }
       console.log(busPathname_array);
-      var busPathMessage = "노선 정류소 이름은" + JSON.stringify(busPathname_array) +",입니다";
-      const $busPath = document.getElementById('busPath');
-      $busPath.innerHTML = busPathMessage;
+
     }
   }
 }
