@@ -196,9 +196,12 @@ function searchBusLaneAJAX() {
       const data = xhr.responseText;
       const busPath = JSON.parse(data);
       console.log(busPath);
+      let busPathname_array = [];
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        console.log(busPath.result.path[0].subPath[1].lane[i]);
+        const busPathname = busPath.result.path[0].subPath[1].lane[i][0];
+        busPathname_array += busPathname;
       }
+      console.log(busPathname_array);
 
 
       //     const busList = [];
