@@ -195,6 +195,7 @@ function searchBusLaneAJAX() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       const data = xhr.responseText;
       const busPath = JSON.parse(data);
+
       console.log(busPath);
       let busPathname_array = [];
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
@@ -202,7 +203,9 @@ function searchBusLaneAJAX() {
         busPathname_array.push(busPathname);
       }
       console.log(busPathname_array);
-
+      var busPathMessage = "노선 정류소 이름은" + JSON.stringify(busPathname_array) +",입니다";
+      const $busPath = document.getElementById('busPath');
+      $busPath.innerHTML = busPathMessage;
     }
   }
 }
