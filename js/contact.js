@@ -199,7 +199,7 @@ function searchBusLaneAJAX() {
       let busPathname_array = [];
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         const busPathname = busPath.result.path[0].subPath[1].lane[i][0];
-        busPathname_array.push(busPathname);
+        busPathname_array.push(JSON.stringify(busPathname));
       }
       console.log(busPathname_array);
 
