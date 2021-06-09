@@ -198,12 +198,17 @@ function searchBusLaneAJAX() {
 
       console.log(busPath);
       let busPathname_array = [];
-      //가는 버스들 번호 -> 노선id로 버스마다 가는 경로들 가져오기
+      let busPathID_array = [];
+
+      //가는 버스들 번호 -> 버스id로 버스마다 가는 경로들 가져오기
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         const busPathname =  busPath.result.path[0].subPath[1].lane[i]['busNo'];
+        const busPathId =  busPath.result.path[0].subPath[1].lane[i]['busID'];
         busPathname_array.push(busPathname);
+        busPathname_array.push(busPathId);
       }
       console.log(busPathname_array);
+      console.log(busPathID_array);
 
     }
   }
