@@ -233,7 +233,7 @@ function searchBusLaneAJAX() {
       // $totalDistance.innerHTML = $totalDistance_V;
 
 
-      console.log(totalTime);
+      console.log($totalTime);
 
     }
   }
