@@ -220,11 +220,18 @@ function searchBusLaneAJAX() {
       let $totalWalk= document.getElementsByClassName('totalWalk');
       let $payment= document.getElementsByClassName('payment');
       let $totalDistance= document.getElementsByClassName('totalDistance');
-      var infoMessage = '';
 
-      $totalTime = busPath.result.path[0].info.totalTime;
-      console.log($totalTime);
+      let $totalTime_V = busPath.result.path[0].info.totalTime + "분";
+      let $totalWalk_V = "도보"+ busPath.result.path[0].info.totalWalk;
+      let $payment_V = busPath.result.path[0].info.payment+"원";
+      let $totalDistance_V= busPath.result.path[0].info.totalDistance+"m";
 
+
+
+      $totalTime.innerHTML = $totalTime_V;
+      $totalWalk.innerHTML = $totalWalk_V;
+      $payment.innerHTML = $payment_V;
+      $totalDistance.innerHTML = $totalDistance_V;
 
     }
   }
