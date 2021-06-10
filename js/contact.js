@@ -239,7 +239,7 @@ function searchBusLaneAJAX() {
 
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
-        let otherbus_every = busPath.result.path[0].subPath[1].lane[i].busNo;
+        const otherbus_every = busPath.result.path[0].subPath[1].lane[i]['busNo'];
         otherbus.innerHTML = otherbus_every;
       }
 
