@@ -212,9 +212,6 @@ function searchBusLaneAJAX() {
         busPathname_array.push(busPathname);
         busPathID_array.push(busPathId);
       }
-      console.log(busPathname_array);
-      console.log(busPathID_array);
-
 
       let $totalTime= document.getElementsByClassName('totalTime');
       let $totalWalk= document.getElementsByClassName('totalWalk');
@@ -241,15 +238,15 @@ function searchBusLaneAJAX() {
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        $('.busNo').html(busPath.result.path[0].subPath[1].lane[i]['busNo']+",");
+        $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i]['busNo']+",");
       }
 
       for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
         $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i]['stationName']+"<br>");
       }
 
-      $('.firstwalkdistance').html(busPath.result.path[0].subPath[0].distance);
-      $('.secondtwalkdistance').html(busPath.result.path[0].subPath[2].distance);
+      $('.firstwalkdistance').html("도보"+busPath.result.path[0].subPath[0].distance+"m");
+      $('.secondtwalkdistance').html("도보"+busPath.result.path[0].subPath[2].distance+"m");
 
       //노선에 넣을 정류장 이름,
     }
