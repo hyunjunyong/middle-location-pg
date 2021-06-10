@@ -226,11 +226,16 @@ function searchBusLaneAJAX() {
       let $payment_V = busPath.result.path[0].info.payment
       let $totalDistance_V= busPath.result.path[0].info.totalDistance;
 
+
       $totalTime.innerHTML = $totalTime_V;
       $totalWalk.innerHTML = $totalWalk_V;
       $payment.innerHTML = $payment_V;
       $totalDistance.innerHTML = $totalDistance_V;
 
+      console.log(totalTime_V);
+      console.log(totalWalk_V);
+      console.log(totalTime);
+      console.log(totalWalk);
     }
   }
 
