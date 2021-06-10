@@ -220,7 +220,7 @@ function searchBusLaneAJAX() {
       let $firstStartStation = document.getElementsByClassName('firstStartStation');
       let $lastEndStation = document.getElementsByClassName('lastEndStation');
       let $busNo = document.getElementsByClassName('busNo');
-      let $otherbus = document.getElementsByClassName('otherbus');
+      let otherbus = document.getElementsByClassName('otherbus');
       let $firstwalkdistance = document.getElementsByClassName('firstwalkdistance');
       let $stationName = document.getElementsByClassName('stationName');
       let $secondtwalkdistance = document.getElementsByClassName('secondtwalkdistance');
@@ -238,11 +238,13 @@ function searchBusLaneAJAX() {
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i]['busNo']+",");
+        // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
+        let otherbus_every = busPath.result.path[0].subPath[1].lane[i].busNo;
+        otherbus.innerHTML = otherbus_every;
       }
 
       for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
-        $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i]['stationName']+"<br>");
+        $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
       }
 
       $('.firstwalkdistance').html("도보"+busPath.result.path[0].subPath[0].distance+"m");
