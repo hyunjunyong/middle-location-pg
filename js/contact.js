@@ -237,10 +237,14 @@ function searchBusLaneAJAX() {
       $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
-      for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-       $.each($('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",")) ;
 
-      }
+       $('.otherbus').html(()=>{
+         for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
+           busPath.result.path[0].subPath[1].lane[i].busNo+","
+         }
+         })
+
+
 
       for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
         $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
