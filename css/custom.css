@@ -61,6 +61,6 @@
     height: 100vh;
     border-right: solid 3px navy;
 }
-#businfo {
-    overflow-x: scroll;
-}
+/*#businfo {*/
+/*    overflow-x: scroll;*/
+/*}*/

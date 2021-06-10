@@ -185,16 +185,7 @@ function makeOutListener(infowindow) {
 
 
 
-const $businfo = document.getElementById('businfo');
-var  infoMessage = '';
-//총 소요 시간
-let totalTime = result.path[0].info.totalTime
-//버스 번호
-//승차 정류소 명칭
-//내리는 정류소 명칭
-//거치는 노선 안내
-//환승 정보, 환승 시 환승 안내
-//
+
 
 
 //버스 api 테스트
@@ -224,7 +215,22 @@ function searchBusLaneAJAX() {
       console.log(busPathname_array);
       console.log(busPathID_array);
 
+
+      let $totalTime= document.getElementById('totalTime');
+      var infoMessage = '';
+      //총 소요 시간
+      $totalTime = busPath.result.path[0].info.totalTime;
+      
+      //버스 번호
+      //승차 정류소 명칭
+      //내리는 정류소 명칭
+      //거치는 노선 안내
+
+      //환승 정보, 환승 시 환승 안내
+
+
     }
   }
+
 }
 searchBusLaneAJAX();
