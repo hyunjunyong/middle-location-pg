@@ -12,6 +12,7 @@
     <link href="css/clean-blog.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -51,42 +52,18 @@
 </header>
 
 
-<!--&lt;!&ndash; Page Header &ndash;&gt;-->
-<!--<div class="">-->
-<!--    <div class="cols">-->
-<!--        <div class="sidebar" style="width: 300px; height: 100vh; background-color: beige">-->
-<!--            <div class="container" style="display: flex; flex-direction: column; justify-content: center;">-->
-<!--                <br>-->
-<!--                <div>-->
-<!--                    <button class="first_address">입력된 첫 번째 주소</button>-->
-<!--                </div>-->
-<!--                <br>-->
-<!--                <div>-->
-<!--                    <button class="second_address">입력된 두 번째 주소</button>-->
-<!--                </div>-->
-<!--                <br>-->
-<!--                <div>-->
-<!--                    <button class="third_address">입력된 세 번째 주소</button>-->
-<!--                </div>-->
-<!--                <br>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        </div>-->
-    <div class="mainContent" style="display: flex;">
-        <div class="map_wrapper" style="width:1400px">
-            <div id="map" style="width:100vw;height:650px;"></div>
+<div class="cols">
+    <div class="sidebar">
+        <div class="container businfo" style="display: flex; flex-direction: column; justify-content: center;">
             <div id="clickLatlng"></div>
-            <div id="locate"></div>
+            <hr style="size: 3px; width: 400px; color: #0069d9">
+            <div class="busInfoContainer">
+                <div class="totalTime">총 소요시간자리</div>
+                <div class="totalTime">버스번호 자리</div>
+            </div>
         </div>
-<!--        중간지점을 알려줌-->
-        <!-- 중간지점 주소의 정류장을 알려줌 -->
-        <!-- <button id = "bus_click" onclick="click()">버스 경로 찾기</button> -->
-        <!--      <div id="bus"></div>-->
-        <!-- 버스 노선 및 경로 알려줌 -->
-
-
     </div>
+    <div id="map" style="width:100vw;height:100vh;margin-top: 0px"/>
 </div>
 
     <!-- Bootstrap core JavaScript -->

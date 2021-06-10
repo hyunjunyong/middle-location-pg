@@ -1,5 +1,5 @@
 import getCenter from "./getCenter.js";
-import searchBusLaneAJAX from "./bus";
+
 
 //각자의 위치 값 배열
 const positions = getPositions();
@@ -101,10 +101,10 @@ function bus() {
 
 
                 var str = result[0].address.address_name
-                    .fontcolor("red")
+                    .fontcolor("navy")
                     .bold()
-                    .fontsize(4);
-                var message = "중간 거리의 주소는 " + str + " 입니다.";
+                    .fontsize(2);
+                var message = "중간위치는 " + str + " 입니다.";
 
                 var resultDiv = document.getElementById("clickLatlng");
                 resultDiv.innerHTML = message;
@@ -196,4 +196,15 @@ function makeOutListener(infowindow) {
         infowindow.close();
     };
 }
-searchBusLaneAJAX();
+
+const $businfo = document.getElementsByClassName('busInfo');
+var  infoMessage = '';
+//총 소요 시간
+let totalTime = result.path[0].info.totalTime
+//버스 번호
+//승차 정류소 명칭
+//내리는 정류소 명칭
+//거치는 노선 안내
+//환승 정보, 환승 시 환승 안내
+//
+

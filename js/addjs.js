@@ -1,5 +1,5 @@
 import getCenter from "./getCenter.js";
-import searchBusLaneAJAX from "./bus";
+
 
 const $add1 = document.getElementById('add1');
 const $add2 = document.getElementById('add2');
@@ -127,4 +127,3 @@ function getPositions() {
     return JSON.parse(localStorage.getItem('positions'));
 }
 
-searchBusLaneAJAX();

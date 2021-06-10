@@ -54,6 +54,10 @@
     justify-content: center;
     align-items: center;
 }
-.restart-btn{
-
+.sidebar{
+    height: 100vh;
+    border-right: solid 3px navy;
+}
+.container businfo{
+    overflow-x: scroll;
 }
