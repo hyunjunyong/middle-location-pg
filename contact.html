@@ -16,51 +16,53 @@
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: #868e96;">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">MVMP</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">길찾기</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post.html">추천장소</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">대중교통</a>
-          </li>
-        </ul>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: #868e96;">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">MVMP</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">길찾기</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="post.html">추천장소</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">대중교통</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <!-- Page Header -->
+<header class="masthead" style="height: 90px; margin-bottom: 0;">
+  <div class="overlay"></div>
+</header>
+
+  <!--Sidebar & main Content-->
+<div class="cols">
+  <div class="sidebar">
+    <div class="container" id="businfo" style="display: flex; flex-direction: column; justify-content: center;">
+      <div id="clickLatlng"></div>
+      <hr style="size: 3px; width: 400px; color: #0069d9">
+      <div class="busInfoContainer">
+        <div class="totalTime">총 소요시간자리</div>
+        <div class="totalTime">버스번호 자리</div>
       </div>
     </div>
-  </nav>
+  </div>
+  <div id="map" style="width:100vw;height:100vh;margin-top: 0px"/>
+</div>
 
-  <!-- Page Header -->
-  <section class="masthead">
-    <div class="map_wrap">
-      <div id="map" style="width:90%;height:400px;position:relative;overflow:hidden;"></div>
-      <div id="clickLatlng"></div>
-      <!-- 중간지점을 알려줌-->
-      <div id="locate"></div>
-      <!-- 중간지점 주소의 정류장을 알려줌 -->
-      <!-- <button id = "bus_click" onclick="click()">버스 경로 찾기</button> -->
-
-      
-    </div>
-    <div id="resultDiv"></div>
-
-  </section>
-  <div id="busPath"></div>
-
-  <!-- Bootstrap core JavaScript -->
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -69,9 +71,7 @@
   <script src="js/clean-blog.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
-  <script type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>
   <script type="module" src="js/contact.js" charset="utf-8"></script>
 </body>
-
 </html>

@@ -91,10 +91,10 @@ function bus() {
         startmarker.setMap(map);
 
         var str = result[0].address.address_name
-          .fontcolor("red")
-          .bold()
-          .fontsize(4);
-        var message = "중간 거리의 주소는 " + str + " 입니다.";
+            .fontcolor("navy")
+            .bold()
+            .fontsize(2);
+        var message = "중간위치는 " + str + " 입니다.";
 
         var resultDiv = document.getElementById("clickLatlng");
         resultDiv.innerHTML = message;
@@ -112,7 +112,7 @@ for (let i = 0; i < positions.length; i++) {
   const colors = ["#ff0033", "#37ff00", "#00ffea", "#a600ff"];
   let selecetedColor = colors[i];
   var request = new XMLHttpRequest();
-  var buslocation = document.querySelector("#bus");
+
 
   let url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248e05cbd3503a24fa3a5707b98dff59732
 &start=${positions[i]["La"]},${positions[i]["Ma"]}&end=${middlelat},${middlelon}`;
@@ -183,6 +183,20 @@ function makeOutListener(infowindow) {
   };
 }
 
+
+
+const $businfo = document.getElementById('businfo');
+var  infoMessage = '';
+//총 소요 시간
+let totalTime = result.path[0].info.totalTime
+//버스 번호
+//승차 정류소 명칭
+//내리는 정류소 명칭
+//거치는 노선 안내
+//환승 정보, 환승 시 환승 안내
+//
+
+
 //버스 api 테스트
 function searchBusLaneAJAX() {
   let xhr = new XMLHttpRequest();
@@ -205,7 +219,7 @@ function searchBusLaneAJAX() {
         const busPathname =  busPath.result.path[0].subPath[1].lane[i]['busNo'];
         const busPathId =  busPath.result.path[0].subPath[1].lane[i]['busID'];
         busPathname_array.push(busPathname);
-        busPathname_array.push(busPathId);
+        busPathID_array.push(busPathId);
       }
       console.log(busPathname_array);
       console.log(busPathID_array);

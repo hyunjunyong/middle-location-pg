@@ -32,3 +32,35 @@
     text-align: center;
 
 }
+.post-preview-out{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.post-preview-left{
+    position:relative;
+    float:left;
+    margin-top: 0px;
+    width:50%;
+    height:300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-preview-right {
+    position:relative;
+    float:right;
+    width:50%;
+    height:300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar{
+    height: 100vh;
+    border-right: solid 3px navy;
+}
+#businfo {
+    overflow-x: scroll;
+}
