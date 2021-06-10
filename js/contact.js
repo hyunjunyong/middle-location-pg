@@ -231,21 +231,27 @@ function searchBusLaneAJAX() {
 
 
       $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
-      // let totalWalk_V = $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk);
-      // let payment_V = $('.payment').html(busPath.result.path[0].info.payment+"원");
-      // let totalDistance_V = $('.totalDistance').html(busPath.result.path[0].info.totalDistance+"m");
-      //
-      // //버스 번호 가져올때 노선 같은 버스 다 표기하기
-      // let busNo_V = $('.busNo').html(busPath.result.path[0].subPath[1].lane[0]['busNo']+"번 버스");
-      // let firstStartStation_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
-      // let lastEndStation_V = $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
-      //
-      // let otherbus_V = $('.firstStartStation').html(busPath.result.path[0].info.otherbus);
-      // let firstwalkdistance_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
-      // let stationName_V = $('.firstStartStation').html(busPath.result.path[0].info.stationName);
-      // let secondtwalkdistance_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
+      $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk);
+      $('.payment').html(busPath.result.path[0].info.payment+"원");
+      $('.totalDistance').html(busPath.result.path[0].info.totalDistance+"m");
 
-      //노선에 넣을 정류장 이름, result.path[0].subPath[1].passStopList.stations[0]['stationName']
+      //버스 번호 가져올때 노선 같은 버스 다 표기하기
+      $('.busNo').html(busPath.result.path[0].subPath[1].lane[0]['busNo']+"번 버스");
+      $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
+      $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
+
+      for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
+        $('.busNo').html(busPath.result.path[0].subPath[1].lane[i]['busNo']+",");
+      }
+
+      for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
+        $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i]['stationName']+"<br>");
+      }
+
+      $('.firstwalkdistance').html(busPath.result.path[0].subPath[0].distance);
+      $('.secondtwalkdistance').html(busPath.result.path[0].subPath[2].distance);
+
+      //노선에 넣을 정류장 이름,
     }
   }
 
