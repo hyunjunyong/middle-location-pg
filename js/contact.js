@@ -237,22 +237,23 @@ function searchBusLaneAJAX() {
       $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
-      for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
+      for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length-1; i++) {
+
         const otherbus_v =busPath.result.path[0].subPath[1].lane[i]['busNo'];
         otherbus.innerHTML += otherbus_v;
 
       }
       console.log(otherbus);
+
       console.log(typeof (otherbus));
-      for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
-        $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
-      }
+      // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
+      //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
+      // }
 
       $('.firstwalkdistance').html("도보"+busPath.result.path[0].subPath[0].distance+"m");
       $('.secondtwalkdistance').html("도보"+busPath.result.path[0].subPath[2].distance+"m");
 
-      //노선에 넣을 정류장 이름,
+      //노선에 넣을 정류장 이름,       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
     }
   }
 
