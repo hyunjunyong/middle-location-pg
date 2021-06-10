@@ -216,17 +216,14 @@ function searchBusLaneAJAX() {
       console.log(busPathID_array);
 
 
-      // let $totalTime= document.getElementById('totalTime');
-      // var infoMessage = '';
-      //총 소요 시간
-      // $totalTime = busPath.result.path[0].info.totalTime;
+      let $totalTime= document.getElementsByClassName('totalTime');
+      let $totalWalk= document.getElementsByClassName('totalWalk');
+      let $payment= document.getElementsByClassName('payment');
+      let $totalDistance= document.getElementsByClassName('totalDistance');
+      var infoMessage = '';
 
-      //버스 번호
-      //승차 정류소 명칭
-      //내리는 정류소 명칭
-      //거치는 노선 안내
-
-      //환승 정보, 환승 시 환승 안내
+      $totalTime = busPath.result.path[0].info.totalTime;
+      console.log($totalTime);
 
 
     }

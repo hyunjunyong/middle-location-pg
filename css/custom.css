@@ -61,6 +61,14 @@
     height: 100vh;
     border-right: solid 3px navy;
 }
-/*#businfo {*/
-/*    overflow-x: scroll;*/
-/*}*/
+.bar{
+    display: inline-block;
+    width: 1px;
+    height: 18px;
+    margin: 0 5px;
+    background-color: #e2e2e2;
+    vertical-align: -1px;
+}
+.totalTime{
+    letter-spacing: 0!important;
+}
