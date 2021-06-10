@@ -240,10 +240,11 @@ function searchBusLaneAJAX() {
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
        // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
         const otherbus_v =busPath.result.path[0].subPath[1].lane[i]['busNo'];
-        otherbus.innerHTML +=otherbus_v;
+        otherbus.innerHTML += otherbus_v;
 
       }
-
+      console.log(otherbus);
+      console.log(typeof (otherbus));
       for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
         $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
       }
