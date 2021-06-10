@@ -222,16 +222,30 @@ function searchBusLaneAJAX() {
       let $totalDistance= document.getElementsByClassName('totalDistance');
       let $firstStartStation = document.getElementsByClassName('firstStartStation');
       let $lastEndStation = document.getElementsByClassName('lastEndStation');
+      let $busNo = document.getElementsByClassName('busNo');
+      let $otherbus = document.getElementsByClassName('otherbus');
+      let $firstwalkdistance = document.getElementsByClassName('firstwalkdistance');
+      let $stationName = document.getElementsByClassName('stationName');
+      let $secondtwalkdistance = document.getElementsByClassName('secondtwalkdistance');
 
 
-      let totalTime_V = $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
-      let totalWalk_V = $('.totalWalk').html(busPath.result.path[0].info.totalWalk);
-      let payment_V = $('.payment').html(busPath.result.path[0].info.payment);
-      let totalDistance_V = $('.totalDistance').html(busPath.result.path[0].info.totalDistance);
 
-      let firstStartStation_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
-      let lastEndStation_V = $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
+      $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
+      // let totalWalk_V = $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk);
+      // let payment_V = $('.payment').html(busPath.result.path[0].info.payment+"원");
+      // let totalDistance_V = $('.totalDistance').html(busPath.result.path[0].info.totalDistance+"m");
+      //
+      // //버스 번호 가져올때 노선 같은 버스 다 표기하기
+      // let busNo_V = $('.busNo').html(busPath.result.path[0].subPath[1].lane[0]['busNo']+"번 버스");
+      // let firstStartStation_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
+      // let lastEndStation_V = $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
+      //
+      // let otherbus_V = $('.firstStartStation').html(busPath.result.path[0].info.otherbus);
+      // let firstwalkdistance_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
+      // let stationName_V = $('.firstStartStation').html(busPath.result.path[0].info.stationName);
+      // let secondtwalkdistance_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
 
+      //노선에 넣을 정류장 이름, result.path[0].subPath[1].passStopList.stations[0]['stationName']
     }
   }
 
