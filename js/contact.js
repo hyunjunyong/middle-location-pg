@@ -221,12 +221,10 @@ function searchBusLaneAJAX() {
       let $payment= document.getElementsByClassName('payment');
       let $totalDistance= document.getElementsByClassName('totalDistance');
 
-      let $totalTime_V = busPath.result.path[0].info.totalTime + "분";
-      let $totalWalk_V = "도보"+ busPath.result.path[0].info.totalWalk;
-      let $payment_V = busPath.result.path[0].info.payment+"원";
-      let $totalDistance_V= busPath.result.path[0].info.totalDistance+"m";
-
-
+      let $totalTime_V = busPath.result.path[0].info.totalTime;
+      let $totalWalk_V = busPath.result.path[0].info.totalWalk;
+      let $payment_V = busPath.result.path[0].info.payment
+      let $totalDistance_V= busPath.result.path[0].info.totalDistance;
 
       $totalTime.innerHTML = $totalTime_V;
       $totalWalk.innerHTML = $totalWalk_V;
