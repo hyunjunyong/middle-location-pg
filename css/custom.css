@@ -69,6 +69,12 @@
     background-color: #e2e2e2;
     vertical-align: -1px;
 }
-.totalTime{
+.busInfoContainer{
     letter-spacing: 0!important;
+}
+.totalWalk, .payment, .totalDistance{
+    font-size: small;
+}
+*{
+    font-family: 'Do Hyeon', sans-serif;
 }

@@ -220,15 +220,17 @@ function searchBusLaneAJAX() {
       let $totalWalk= document.getElementsByClassName('totalWalk');
       let $payment= document.getElementsByClassName('payment');
       let $totalDistance= document.getElementsByClassName('totalDistance');
+      let $firstStartStation = document.getElementsByClassName('firstStartStation');
+      let $lastEndStation = document.getElementsByClassName('lastEndStation');
 
-      let totalTime_V = $('.totalTime').html(busPath.result.path[0].info.totalTime);
+
+      let totalTime_V = $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
       let totalWalk_V = $('.totalWalk').html(busPath.result.path[0].info.totalWalk);
       let payment_V = $('.payment').html(busPath.result.path[0].info.payment);
-      let totalDistance = $('.totalDistance').html(busPath.result.path[0].info.payment);
+      let totalDistance_V = $('.totalDistance').html(busPath.result.path[0].info.totalDistance);
 
-
-      // console.log(totalTime);
-
+      let firstStartStation_V = $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
+      let lastEndStation_V = $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
     }
   }
