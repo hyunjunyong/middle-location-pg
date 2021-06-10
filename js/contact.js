@@ -221,19 +221,12 @@ function searchBusLaneAJAX() {
       let $payment= document.getElementsByClassName('payment');
       let $totalDistance= document.getElementsByClassName('totalDistance');
 
-       // let $totalTime_V = busPath.result.path[0].info.totalTime;
-      // let $totalWalk_V = busPath.result.path[0].info.totalWalk;
-      // let $payment_V = busPath.result.path[0].info.payment
-      // let $totalDistance_V= busPath.result.path[0].info.totalDistance;
+      let totalTime_V = $('.totalTime').html(busPath.result.path[0].info.totalTime);
+      let totalWalk_V = $('.totalWalk').html(busPath.result.path[0].info.totalWalk);
+      let payment_V = $('.payment').html(busPath.result.path[0].info.payment);
+      let totalDistance = $('.totalDistance').html(busPath.result.path[0].info.payment);
 
 
-      let html = $('.totalTime').html(busPath.result.path[0].info.totalTime);
-      // $totalTime.innerHTML = busPath.result.path[0].info.totalTime;
-      // $totalWalk.innerHTML = $totalWalk_V;
-      // $payment.innerHTML = $payment_V;
-      // $totalDistance.innerHTML = $totalDistance_V;
-
-      console.log(html);
       // console.log(totalTime);
 
 
