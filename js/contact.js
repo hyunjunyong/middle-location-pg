@@ -1,5 +1,5 @@
 import getCenter from "./getCenter.js";
-var n = 0;
+let n = 0;
 //n값으로 시작위치와 중간지점의 교통정보 파악
 
 //각자의 위치 값 배열
@@ -26,7 +26,7 @@ let markerPosition = [
 
 for (n in positions) {
   markerPosition.push({
-    title: "시작위치" + (n + 1),
+    title: "시작위치" + (parseInt(n) + 1),
     latlng: new kakao.maps.LatLng(positions[n]["Ma"], positions[n]["La"]),
   });
 }
@@ -74,8 +74,8 @@ function bus() {
         );
 
         //출발지점 마커 객체 생성
-        for (var i = 1; i < markerPosition.length; i++) {
-          i == n;
+        for (let i = 1; i < markerPosition.length; i++) {
+          n == i - 1;
           // 마커를 생성합니다
           var startmarker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
@@ -99,6 +99,7 @@ function bus() {
             makeOutListener(infowindow1)
           );
           kakao.maps.event.addListener(startmarker, "click", function () {
+            console.log(n);
             searchBusLaneAJAX();
           });
         }
