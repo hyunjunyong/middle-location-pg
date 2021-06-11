@@ -26,7 +26,7 @@ let markerPosition = [
 
 for (n in positions) {
   markerPosition.push({
-    title: "시작위치" + (n + 1),
+    title: "시작위치" + (parseint(n) + 1),
     latlng: new kakao.maps.LatLng(positions[n]["Ma"], positions[n]["La"]),
   });
 }
@@ -75,11 +75,13 @@ function bus() {
 
         //출발지점 마커 객체 생성
         for (var i = 1; i < markerPosition.length; i++) {
+          i == n;
           // 마커를 생성합니다
           var startmarker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: markerPosition[i].latlng, // 마커를 표시할 위치
             title: markerPosition[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
           });
           var infowindow1 = new kakao.maps.InfoWindow({
             position: markerPosition[i].latlng,
@@ -198,7 +200,7 @@ function makeOutListener(infowindow) {
 //버스 api 테스트
 function searchBusLaneAJAX() {
   let xhr = new XMLHttpRequest();
-  for (var i = 0; i < positions.length; i++) {
+  for (var i = 0; i < markerPosition.length; i++) {
     if (n == i) {
       let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[i]["La"]}&SY=${positions[i]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
     }
