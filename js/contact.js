@@ -250,7 +250,9 @@ function searchBusLaneAJAX() {
       // }
 
       $('.firstwalkdistance').html("도보"+busPath.result.path[0].subPath[0].distance+"m");
-      $('.secondtwalkdistance').html("도보"+busPath.result.path[0].subPath[2].distance+"m");
+      let secondtwalkdistance_v = "도보"+busPath.result.path[0].subPath[2].distance+"m";
+      secondtwalkdistance.innerHTML = secondtwalkdistance_v;
+      // $('.secondtwalkdistance').html("도보"+busPath.result.path[0].subPath[2].distance+"m");
 
       //노선에 넣을 정류장 이름,       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
     }
