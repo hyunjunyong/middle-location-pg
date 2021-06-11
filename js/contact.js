@@ -254,18 +254,18 @@ function searchBusLaneAJAX() {
         busPath.result.path[0].info.firstStartStation
       );
       $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
-      
+
       let otherbus = document.getElementsByClassName("otherbus");
-      
-      if(busPath.result.path[0].subPath[1].lane.length == 1){
+
+      if (busPath.result.path[0].subPath[1].lane.length == 1) {
         $(".otherbus").html("대체 버스 정보가 없습니다.");
-      }
-      else{
-      // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
-        for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-          
-          $(".otherbus").html(busPath.result.path[0].subPath[1].lane[i]["busNo"] + ",");
-          (busPath.result.path[0].subPath[1].lane[i]["busNo"]);
+      } else {
+        // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
+        for (let i in busPath.result.path[0].subPath[1].lane) {
+          $(".otherbus").html(
+            busPath.result.path[0].subPath[1].lane[i]["busNo"] + ","
+          );
+          busPath.result.path[0].subPath[1].lane[i]["busNo"];
         }
       }
       //console.log(otherbus1);
