@@ -262,11 +262,11 @@ function searchBusLaneAJAX() {
       } else {
         // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
         for (let i in busPath.result.path[0].subPath[1].lane) {
-          $(".otherbus").html(
-            busPath.result.path[0].subPath[1].lane[i]["busNo"] + ","
-          );
-          console.log(busPath.result.path[0].subPath[1].lane[i]["busNo"]);
+          let busPathname1 = " "; //string으로 대체 버스번호들 저장
+          busPathname1 +=
+            busPath.result.path[0].subPath[1].lane[i]["busNo"] + ",";
         }
+        $(".otherbus").html(busPathname1);
       }
       //console.log(otherbus1);
 
