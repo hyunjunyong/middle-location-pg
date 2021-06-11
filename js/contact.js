@@ -255,13 +255,15 @@ function searchBusLaneAJAX() {
       );
       $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
       
+      let otherbus = document.getElementsByClassName("otherbus");
+      
       if(busPath.result.path[0].subPath[1].lane[i].busNo == NULL){
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       }
       else(
       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
         for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-          let otherbus = document.getElementsByClassName("otherbus");
+          
           $(".otherbus").html(busPath.result.path[0].subPath[1].lane[i]["busNo"] + ",");
           (busPath.result.path[0].subPath[1].lane[i]["busNo"]);
         }
