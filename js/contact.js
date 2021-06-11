@@ -257,7 +257,7 @@ function searchBusLaneAJAX() {
       
       let otherbus = document.getElementsByClassName("otherbus");
       
-      if(busPath.result.path[0].subPath[1].lane[i].busNo == NULL){
+      if(busPath.result.path[0].subPath[1].lane.length == 1){
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       }
       else(
