@@ -1,4 +1,6 @@
 import getCenter from "./getCenter.js";
+var n = 0;
+//n값으로 시작위치와 중간지점의 교통정보 파악
 
 //각자의 위치 값 배열
 const positions = getPositions();
@@ -15,12 +17,19 @@ let markerPosition = [
   },
 ];
 // console.log(markerPosition);
-positions.forEach((position) => {
+// positions.forEach((position) => {
+//   markerPosition.push({
+//     title: "시작위치",
+//     latlng: new kakao.maps.LatLng(position["Ma"], position["La"]),
+//   });
+// });
+
+for (n in positions) {
   markerPosition.push({
-    title: "시작위치",
-    latlng: new kakao.maps.LatLng(position["Ma"], position["La"]),
+    title: "시작위치" + (n + 1),
+    latlng: new kakao.maps.LatLng(position[n]["Ma"], position[n]["La"]),
   });
-});
+}
 // console.log(positions[0]["Ma"], positions[0]["La"]);
 let middlelon = centerPosition.lon;
 let middlelat = centerPosition.lat;
@@ -91,9 +100,9 @@ function bus() {
         startmarker.setMap(map);
 
         var str = result[0].address.address_name
-            .fontcolor("navy")
-            .bold()
-            .fontsize(2);
+          .fontcolor("navy")
+          .bold()
+          .fontsize(2);
         var message = "중간위치는 " + str + " 입니다.";
 
         var resultDiv = document.getElementById("clickLatlng");
@@ -112,7 +121,6 @@ for (let i = 0; i < positions.length; i++) {
   const colors = ["#ff0033", "#37ff00", "#00ffea", "#a600ff"];
   let selecetedColor = colors[i];
   var request = new XMLHttpRequest();
-
 
   let url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248e05cbd3503a24fa3a5707b98dff59732
 &start=${positions[i]["La"]},${positions[i]["Ma"]}&end=${middlelat},${middlelon}`;
@@ -183,11 +191,6 @@ function makeOutListener(infowindow) {
   };
 }
 
-
-
-
-
-
 //버스 api 테스트
 function searchBusLaneAJAX() {
   let xhr = new XMLHttpRequest();
@@ -196,7 +199,6 @@ function searchBusLaneAJAX() {
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = () => {
-
     if (xhr.readyState == 4 && xhr.status == 200) {
       const data = xhr.responseText;
       const busPath = JSON.parse(data);
@@ -207,54 +209,65 @@ function searchBusLaneAJAX() {
 
       //가는 버스들 번호 -> 버스id로 버스마다 가는 경로들 가져오기
       for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        const busPathname =  busPath.result.path[0].subPath[1].lane[i]['busNo'];
-        const busPathId =  busPath.result.path[0].subPath[1].lane[i]['busID'];
+        const busPathname = busPath.result.path[0].subPath[1].lane[i]["busNo"];
+        const busPathId = busPath.result.path[0].subPath[1].lane[i]["busID"];
         busPathname_array.push(busPathname);
         busPathID_array.push(busPathId);
       }
 
-      let $totalTime= document.getElementsByClassName('totalTime');
-      let $totalWalk= document.getElementsByClassName('totalWalk');
-      let $payment= document.getElementsByClassName('payment');
-      let $totalDistance= document.getElementsByClassName('totalDistance');
-      let $firstStartStation = document.getElementsByClassName('firstStartStation');
-      let $lastEndStation = document.getElementsByClassName('lastEndStation');
-      let $busNo = document.getElementsByClassName('busNo');
+      let $totalTime = document.getElementsByClassName("totalTime");
+      let $totalWalk = document.getElementsByClassName("totalWalk");
+      let $payment = document.getElementsByClassName("payment");
+      let $totalDistance = document.getElementsByClassName("totalDistance");
+      let $firstStartStation =
+        document.getElementsByClassName("firstStartStation");
+      let $lastEndStation = document.getElementsByClassName("lastEndStation");
+      let $busNo = document.getElementsByClassName("busNo");
       // let otherbus = document.getElementsByClassName('otherbus');
-      let firstwalkdistance = document.getElementsByClassName('firstwalkdistance');
-      let stationName = document.getElementsByClassName('stationName');
-      let secondtwalkdistance = document.getElementsByClassName('secondtwalkdistance');
+      let firstwalkdistance =
+        document.getElementsByClassName("firstwalkdistance");
+      let stationName = document.getElementsByClassName("stationName");
+      let secondtwalkdistance = document.getElementsByClassName(
+        "secondtwalkdistance"
+      );
 
-
-
-      $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
-      $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk+"m");
-      $('.payment').html(busPath.result.path[0].info.payment+"원");
-      $('.totalDistance').html(busPath.result.path[0].info.totalDistance+"m");
+      $(".totalTime").html(busPath.result.path[0].info.totalTime + "분");
+      $(".totalWalk").html(
+        "도보" + busPath.result.path[0].info.totalWalk + "m"
+      );
+      $(".payment").html(busPath.result.path[0].info.payment + "원");
+      $(".totalDistance").html(busPath.result.path[0].info.totalDistance + "m");
 
       //버스 번호 가져올때 노선 같은 버스 다 표기하기
-      $('.busNo').html(busPath.result.path[0].subPath[1].lane[0]['busNo']+"번 버스");
-      $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
-      $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
-
+      $(".busNo").html(
+        busPath.result.path[0].subPath[1].lane[0]["busNo"] + "번 버스"
+      );
+      $(".firstStartStation").html(
+        busPath.result.path[0].info.firstStartStation
+      );
+      $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
 
       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        let otherbus1 = document.getElementsByClassName('otherbus');
-        otherbus1.innerHTML = busPath.result.path[0].subPath[1].lane[i]['busNo']+" ";
-       }
+        let otherbus1 = document.getElementsByClassName("otherbus");
+        otherbus1.innerHTML =
+          busPath.result.path[0].subPath[1].lane[i]["busNo"] + " ";
+      }
       console.log(otherbus1);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
       //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
       // }
 
-      $('.firstwalkdistance').html("도보"+busPath.result.path[0].subPath[0].distance+"m");
-      $('.secondtwalkdistance').html("도보"+busPath.result.path[0].subPath[2].distance+"m");
+      $(".firstwalkdistance").html(
+        "도보" + busPath.result.path[0].subPath[0].distance + "m"
+      );
+      $(".secondtwalkdistance").html(
+        "도보" + busPath.result.path[0].subPath[2].distance + "m"
+      );
 
       //노선에 넣을 정류장 이름,       //
     }
-  }
-
+  };
 }
 searchBusLaneAJAX();
