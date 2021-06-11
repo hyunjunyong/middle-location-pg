@@ -21,3 +21,13 @@
 #bus_click {
     display: flex;
 }
+
+.walk {
+    border-left: gray solid 3px;
+    padding: 5px;
+}
+
+.bus {
+    border-left: rgba(0, 92, 191, 0.79) solid 3px;
+    padding: 5px;
+}
