@@ -258,6 +258,7 @@ function searchBusLaneAJAX() {
       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         let otherbus = document.getElementsByClassName("otherbus");
+        console.log(busPath.result.path[0].subPath[1].lane[i]["busNo"]);
         $(".otherbus").html(busPath.result.path[0].subPath[1].lane[i]["busNo"] + " ");
         (busPath.result.path[0].subPath[1].lane[i]["busNo"]);
       }
