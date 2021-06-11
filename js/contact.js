@@ -98,7 +98,7 @@ function bus() {
             "mouseout",
             makeOutListener(infowindow1)
           );
-          kakao.maps.event.addListener(marker, "click", function () {
+          kakao.maps.event.addListener(startmarker, "click", function () {
             searchBusLaneAJAX();
           });
         }
