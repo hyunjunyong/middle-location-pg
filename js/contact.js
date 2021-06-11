@@ -75,7 +75,7 @@ function bus() {
 
         //출발지점 마커 객체 생성
         for (let i = 1; i < markerPosition.length; i++) {
-          n == i - 1;
+          n = i - 1;
           // 마커를 생성합니다
           var startmarker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
