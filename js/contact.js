@@ -24,10 +24,10 @@ let markerPosition = [
 //   });
 // });
 
-for (n in positions) {
+for (let i in positions) {
   markerPosition.push({
-    title: "시작위치" + (parseInt(n) + 1),
-    latlng: new kakao.maps.LatLng(positions[n]["Ma"], positions[n]["La"]),
+    title: "시작위치" + (parseInt(i) + 1),
+    latlng: new kakao.maps.LatLng(positions[i]["Ma"], positions[i]["La"]),
   });
 }
 // console.log(positions[0]["Ma"], positions[0]["La"]);
@@ -75,7 +75,6 @@ function bus() {
 
         //출발지점 마커 객체 생성
         for (let i = 1; i < markerPosition.length; i++) {
-          n = i - 1;
           // 마커를 생성합니다
           var startmarker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
@@ -99,6 +98,7 @@ function bus() {
             makeOutListener(infowindow1)
           );
           kakao.maps.event.addListener(startmarker, "click", function () {
+            n = i - 1;
             console.log(n);
             searchBusLaneAJAX();
           });
