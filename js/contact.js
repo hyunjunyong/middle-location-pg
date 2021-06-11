@@ -256,13 +256,12 @@ function searchBusLaneAJAX() {
       $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
 
       let otherbus = document.getElementsByClassName("otherbus");
-
+      let busPathname1 = " "; //string으로 대체 버스번호들 저장
       if (busPath.result.path[0].subPath[1].lane.length == 1) {
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       } else {
         // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
         for (let i in busPath.result.path[0].subPath[1].lane) {
-          let busPathname1 = " "; //string으로 대체 버스번호들 저장
           busPathname1 +=
             busPath.result.path[0].subPath[1].lane[i]["busNo"] + ",";
         }
