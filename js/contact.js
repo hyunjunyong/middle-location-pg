@@ -220,7 +220,7 @@ function searchBusLaneAJAX() {
       let $firstStartStation = document.getElementsByClassName('firstStartStation');
       let $lastEndStation = document.getElementsByClassName('lastEndStation');
       let $busNo = document.getElementsByClassName('busNo');
-      let otherbus = document.getElementsByClassName('otherbus');
+      // let otherbus = document.getElementsByClassName('otherbus');
       let firstwalkdistance = document.getElementsByClassName('firstwalkdistance');
       let stationName = document.getElementsByClassName('stationName');
       let secondtwalkdistance = document.getElementsByClassName('secondtwalkdistance');
@@ -240,9 +240,10 @@ function searchBusLaneAJAX() {
 
       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-        otherbus.innerHTML = busPath.result.path[0].subPath[1].lane[i]['busNo']+" ";
+        let otherbus1 = document.getElementsByClassName('otherbus');
+        otherbus1.innerHTML = busPath.result.path[0].subPath[1].lane[i]['busNo']+" ";
        }
-      console.log(otherbus)
+      console.log(otherbus1);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
       //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
