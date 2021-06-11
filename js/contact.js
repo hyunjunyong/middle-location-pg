@@ -245,6 +245,7 @@ function searchBusLaneAJAX() {
         otherbus_array.push(otherbus_info);
       }
       console.log(JSON.stringify(otherbus_array));
+      otherbus.innerHTML = JSON.stringify(otherbus_array);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
       //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
