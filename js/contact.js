@@ -260,7 +260,7 @@ function searchBusLaneAJAX() {
         otherbus1.innerHTML =
           busPath.result.path[0].subPath[1].lane[i]["busNo"] + " ";
       }
-      console.log(otherbus1);
+      //console.log(otherbus1);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
       //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
