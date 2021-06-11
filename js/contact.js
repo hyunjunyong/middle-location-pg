@@ -200,12 +200,8 @@ function makeOutListener(infowindow) {
 //버스 api 테스트
 function searchBusLaneAJAX() {
   let xhr = new XMLHttpRequest();
-  for (var i = 0; i < markerPosition.length; i++) {
-    if (n == i) {
-      let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[i]["La"]}&SY=${positions[i]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
-    }
-  }
-  // let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[0]["La"]}&SY=${positions[0]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
+
+  let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${positions[n]["La"]}&SY=${positions[n]["Ma"]}&EX=${middlelat}&EY=${middlelon}&OPT=1&apiKey=LRP8InDDBglP/04OezKdyA`;
 
   xhr.open("GET", url, true);
   xhr.send();
