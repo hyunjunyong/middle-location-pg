@@ -260,14 +260,14 @@ function searchBusLaneAJAX() {
       if(busPath.result.path[0].subPath[1].lane.length == 1){
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       }
-      else(
+      else{
       // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
         for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
           
           $(".otherbus").html(busPath.result.path[0].subPath[1].lane[i]["busNo"] + ",");
           (busPath.result.path[0].subPath[1].lane[i]["busNo"]);
         }
-      )
+      }
       //console.log(otherbus1);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
