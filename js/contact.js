@@ -237,9 +237,9 @@ function searchBusLaneAJAX() {
       $('.firstStartStation').html(busPath.result.path[0].info.firstStartStation);
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
-      $('.otherbus').each(function (i=1,e) {
+      for (let i = 0; i < busPath.result.path[0].subPath[1].lane.length; i++) {
         $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
-      })
+      }
       console.log(otherbus);
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
