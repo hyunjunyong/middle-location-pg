@@ -72,6 +72,7 @@ function bus() {
           "mouseout",
           makeOutListener(infowindow)
         );
+
         //출발지점 마커 객체 생성
         for (var i = 1; i < markerPosition.length; i++) {
           // 마커를 생성합니다
@@ -95,6 +96,9 @@ function bus() {
             "mouseout",
             makeOutListener(infowindow1)
           );
+          kakao.maps.event.addListener(marker, "click", function () {
+            searchBusLaneAJAX();
+          });
         }
         //출발지점 마커 그리기
         startmarker.setMap(map);
@@ -270,4 +274,3 @@ function searchBusLaneAJAX() {
     }
   };
 }
-searchBusLaneAJAX();
