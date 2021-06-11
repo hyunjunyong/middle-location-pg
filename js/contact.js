@@ -228,7 +228,7 @@ function searchBusLaneAJAX() {
 
 
       $('.totalTime').html(busPath.result.path[0].info.totalTime+"분");
-      $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk);
+      $('.totalWalk').html("도보"+busPath.result.path[0].info.totalWalk+"m");
       $('.payment').html(busPath.result.path[0].info.payment+"원");
       $('.totalDistance').html(busPath.result.path[0].info.totalDistance+"m");
 
@@ -238,14 +238,10 @@ function searchBusLaneAJAX() {
       $('.lastEndStation').html(busPath.result.path[0].info.lastEndStation);
 
 
-      let otherbus_array = [];
+      // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
       for (let i = 1; i < busPath.result.path[0].subPath[1].lane.length; i++) {
-         // $('.otherbus').html(busPath.result.path[0].subPath[1].lane[i].busNo+",");
-        const otherbus_info = busPath.result.path[0].subPath[1].lane[i]['busNo']+",";
-        otherbus_array.push(otherbus_info);
-      }
-      console.log(JSON.stringify(otherbus_array));
-      otherbus.innerTEXT = JSON.stringify(otherbus_array);
+        otherbus.innerHTML = busPath.result.path[0].subPath[1].lane[i]['busNo']+" ";
+       }
 
       // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
       //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
