@@ -27,7 +27,7 @@ let markerPosition = [
 for (n in positions) {
   markerPosition.push({
     title: "시작위치" + (n + 1),
-    latlng: new kakao.maps.LatLng(position[n]["Ma"], position[n]["La"]),
+    latlng: new kakao.maps.LatLng(positions[n]["Ma"], positions[n]["La"]),
   });
 }
 // console.log(positions[0]["Ma"], positions[0]["La"]);
