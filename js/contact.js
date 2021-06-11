@@ -257,6 +257,8 @@ function searchBusLaneAJAX() {
 
       let otherbus = document.getElementsByClassName("otherbus");
       let busPathname1 = " "; //string으로 대체 버스번호들 저장
+      let stationNmae1 = " "; //string으로 노선 저장
+
       if (busPath.result.path[0].subPath[1].lane.length == 1) {
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       } else {
@@ -267,11 +269,13 @@ function searchBusLaneAJAX() {
         }
         $(".otherbus").html(busPathname1);
       }
-      //console.log(otherbus1);
 
-      // for (let i = 0; i < busPath.result.path[0].subPath[1].passStopList.stations.length ; i++) {
-      //   $('.stationName').html(busPath.result.path[0].subPath[1].passStopList.stations[i].stationName+",");
-      // }
+      for (let i in busPath.result.path[0].subPath[1].passStopList.stations) {
+        stationName1 +=
+          busPath.result.path[0].subPath[1].passStopList.stations[i]
+            .stationName + "->";
+      }
+      $(".stationName").html(stationName1);
 
       $(".firstwalkdistance").html(
         "도보" + busPath.result.path[0].subPath[0].distance + "m"
