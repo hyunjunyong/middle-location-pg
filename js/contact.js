@@ -55,11 +55,24 @@ function bus() {
           position: markerPosition[0].latlng,
           content: `<div style="padding: 5px;">${markerPosition[0].title}</div>`,
         });
+        var imageSrc = "../img/marker.png", // 마커이미지의 주소입니다
+          imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+          imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize,
+            imageOption
+          ),
+        // 마커를 생성합니다
+        
         //도착지점 마커 객체 생성
         var marker = new kakao.maps.Marker({
           map: map, // 마커를 표시할 지도
           position: markerPosition[0].latlng, // 마커를 표시할 위치
           title: markerPosition[0].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커이미지 설정
         });
         //인포윈도우와 마커 그리기
         kakao.maps.event.addListener(
@@ -213,29 +226,30 @@ function searchBusLaneAJAX() {
       const busPath = JSON.parse(data);
 
       console.log(busPath);
-      const $toggleBtn = "<img\n" +
-          "                  src=\"img/down-arrow.png\"\n" +
-          "                  width=\"14rem\"\n" +
-          "                  height=\"14rem\"\n" +
-          "                  type=\"button\"\n" +
-          "                  data-toggle=\"collapse\"\n" +
-          "                  data-target=\".stationName\"\n" +
-          "                  style=\" padding-left: 1px\"\n" +
-          "          >"
+      const $toggleBtn =
+        "<img\n" +
+        '                  src="img/down-arrow.png"\n' +
+        '                  width="14rem"\n' +
+        '                  height="14rem"\n' +
+        '                  type="button"\n' +
+        '                  data-toggle="collapse"\n' +
+        '                  data-target=".stationName"\n' +
+        '                  style=" padding-left: 1px"\n' +
+        "          >";
 
       $(".totalTime").html(busPath.result.path[0].info.totalTime + "분");
       $(".totalWalk").html(
-          "도보" + busPath.result.path[0].info.totalWalk + "m"
+        "도보" + busPath.result.path[0].info.totalWalk + "m"
       );
       $(".payment").html(busPath.result.path[0].info.payment + "원");
       $(".totalDistance").html(busPath.result.path[0].info.totalDistance + "m");
 
       //버스 번호 가져올때 노선 같은 버스 다 표기하기
       $(".busNo").html(
-          busPath.result.path[0].subPath[1].lane[0]["busNo"] + "번 버스"
+        busPath.result.path[0].subPath[1].lane[0]["busNo"] + "번 버스"
       );
       $(".firstStartStation").html(
-          busPath.result.path[0].info.firstStartStation
+        busPath.result.path[0].info.firstStartStation
       );
       $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
 
@@ -246,35 +260,36 @@ function searchBusLaneAJAX() {
       if (busPath.result.path[0].subPath[1].lane.length == 1) {
         $(".otherbus").html("대체 버스 정보가 없습니다.");
       } else {
-        let subPath = busPath.result.path[0].subPath[1].lane
-        subPath.shift()
+        let subPath = busPath.result.path[0].subPath[1].lane;
+        subPath.shift();
         for (let i in subPath) {
-          busPathname1 +=
-              subPath[i]["busNo"] + ",";
+          busPathname1 += subPath[i]["busNo"] + ",";
         }
         $(".otherbus").html(busPathname1);
       }
-      let stations = busPath.result.path[0].subPath[1].passStopList.stations
+      let stations = busPath.result.path[0].subPath[1].passStopList.stations;
       //출발지 제거
-      stations.shift()
+      stations.shift();
       //도착지 제거
-      stations.pop()
+      stations.pop();
 
       const stationNum = stations.length + 1;
-      const stationNumNode = `<span style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;">${stationNum}개 정류장 이동</span>` + $toggleBtn
+      const stationNumNode =
+        `<span style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;">${stationNum}개 정류장 이동</span>` +
+        $toggleBtn;
       $(".howManyStation").html(stationNumNode);
 
-      console.log(stations)
+      console.log(stations);
       for (let i in stations) {
-        stationName1 += `<div style="padding-left: 15px;">${stations[i].stationName}</div>`
+        stationName1 += `<div style="padding-left: 15px;">${stations[i].stationName}</div>`;
       }
       $(".stationName").html(stationName1);
 
       $(".firstwalkdistance").html(
-          "도보" + busPath.result.path[0].subPath[0].distance + "m"
+        "도보" + busPath.result.path[0].subPath[0].distance + "m"
       );
       $(".secondtwalkdistance").html(
-          "도보" + busPath.result.path[0].subPath[2].distance + "m"
+        "도보" + busPath.result.path[0].subPath[2].distance + "m"
       );
 
       //노선에 넣을 정류장 이름,       //
@@ -282,35 +297,32 @@ function searchBusLaneAJAX() {
   };
 }
 
-import pathTest from "../data/pathTest.js"
+import pathTest from "../data/pathTest.js";
 
 //테스트 정보로 UI 테스트
 function busPathTest() {
   const busPath = pathTest;
-  const $toggleBtn = "<img\n" +
-      "                  src=\"img/down-arrow.png\"\n" +
-      "                  width=\"14rem\"\n" +
-      "                  height=\"14rem\"\n" +
-      "                  type=\"button\"\n" +
-      "                  data-toggle=\"collapse\"\n" +
-      "                  data-target=\".stationName\"\n" +
-      "                  style=\" padding-left: 1px\"\n" +
-      "          >"
+  const $toggleBtn =
+    "<img\n" +
+    '                  src="img/down-arrow.png"\n' +
+    '                  width="14rem"\n' +
+    '                  height="14rem"\n' +
+    '                  type="button"\n' +
+    '                  data-toggle="collapse"\n' +
+    '                  data-target=".stationName"\n' +
+    '                  style=" padding-left: 1px"\n' +
+    "          >";
 
   $(".totalTime").html(busPath.result.path[0].info.totalTime + "분");
-  $(".totalWalk").html(
-      "도보" + busPath.result.path[0].info.totalWalk + "m"
-  );
+  $(".totalWalk").html("도보" + busPath.result.path[0].info.totalWalk + "m");
   $(".payment").html(busPath.result.path[0].info.payment + "원");
   $(".totalDistance").html(busPath.result.path[0].info.totalDistance + "m");
 
   //버스 번호 가져올때 노선 같은 버스 다 표기하기
   $(".busNo").html(
-      busPath.result.path[0].subPath[1].lane[0]["busNo"] + "번 버스"
+    busPath.result.path[0].subPath[1].lane[0]["busNo"] + "번 버스"
   );
-  $(".firstStartStation").html(
-      busPath.result.path[0].info.firstStartStation
-  );
+  $(".firstStartStation").html(busPath.result.path[0].info.firstStartStation);
   $(".lastEndStation").html(busPath.result.path[0].info.lastEndStation);
 
   let otherbus = document.getElementsByClassName("otherbus");
@@ -320,35 +332,36 @@ function busPathTest() {
   if (busPath.result.path[0].subPath[1].lane.length == 1) {
     $(".otherbus").html("대체 버스 정보가 없습니다.");
   } else {
-    let subPath = busPath.result.path[0].subPath[1].lane
-    subPath.shift()
+    let subPath = busPath.result.path[0].subPath[1].lane;
+    subPath.shift();
     for (let i in subPath) {
-      busPathname1 +=
-          subPath[i]["busNo"] + ",";
+      busPathname1 += subPath[i]["busNo"] + ",";
     }
     $(".otherbus").html(busPathname1);
   }
-  let stations = busPath.result.path[0].subPath[1].passStopList.stations
+  let stations = busPath.result.path[0].subPath[1].passStopList.stations;
   //출발지 제거
-  stations.shift()
+  stations.shift();
   //도착지 제거
-  stations.pop()
+  stations.pop();
 
   const stationNum = stations.length + 1;
-  const stationNumNode = `<span style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;">${stationNum}개 정류장 이동</span>` + $toggleBtn
+  const stationNumNode =
+    `<span style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;">${stationNum}개 정류장 이동</span>` +
+    $toggleBtn;
   $(".howManyStation").html(stationNumNode);
 
-  console.log(stations)
+  console.log(stations);
   for (let i in stations) {
-    stationName1 += `<div style="padding-left: 15px;">${stations[i].stationName}</div>`
+    stationName1 += `<div style="padding-left: 15px;">${stations[i].stationName}</div>`;
   }
   $(".stationName").html(stationName1);
 
   $(".firstwalkdistance").html(
-      "도보" + busPath.result.path[0].subPath[0].distance + "m"
+    "도보" + busPath.result.path[0].subPath[0].distance + "m"
   );
   $(".secondtwalkdistance").html(
-      "도보" + busPath.result.path[0].subPath[2].distance + "m"
+    "도보" + busPath.result.path[0].subPath[2].distance + "m"
   );
 
   //노선에 넣을 정류장 이름,       //
