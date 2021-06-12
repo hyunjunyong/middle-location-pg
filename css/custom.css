@@ -110,3 +110,18 @@
 .get_middle:hover {
     background-color:#313b66;
 }
+.select_btn{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px -150px -150px -600px;
+}
+
+.keyword, .category{
+    font-size: 40px;
+    padding: 30px;
+    margin-left: 60px;
+    border: solid 2px #0069d9;
+    text-align: center;
+}
