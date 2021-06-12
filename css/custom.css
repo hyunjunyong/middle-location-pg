@@ -125,3 +125,7 @@
     border: solid 2px #0069d9;
     text-align: center;
 }
+.mainimg{
+    display: block;
+    margin: 0 auto;
+}
