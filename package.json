@@ -1,6 +1,7 @@
 {
     "title": "Clean Blog",
     "name": "startbootstrap-clean-blog",
+    "type": "module",
     "version": "5.0.10",
     "scripts": {
         "start": "node_modules/.bin/gulp watch"
