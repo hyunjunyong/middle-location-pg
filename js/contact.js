@@ -61,12 +61,11 @@ function bus() {
 
         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
         var markerImage = new kakao.maps.MarkerImage(
-            imageSrc,
-            imageSize,
-            imageOption
-          ),
-        // 마커를 생성합니다
-        
+          imageSrc,
+          imageSize,
+          imageOption
+        );
+
         //도착지점 마커 객체 생성
         var marker = new kakao.maps.Marker({
           map: map, // 마커를 표시할 지도
@@ -74,8 +73,7 @@ function bus() {
           title: markerPosition[0].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
           image: markerImage, // 마커이미지 설정
         });
-
-        marker.setMap(map); 
+        marker.setMap(map);
         //인포윈도우와 마커 그리기
         kakao.maps.event.addListener(
           marker,
