@@ -74,6 +74,8 @@ function bus() {
           title: markerPosition[0].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
           image: markerImage, // 마커이미지 설정
         });
+
+        marker.setMap(map); 
         //인포윈도우와 마커 그리기
         kakao.maps.event.addListener(
           marker,
