@@ -2,4 +2,3 @@
 사이트
 https://hyunjunyong.github.io/middle-location-pg/
 
-kimjuhee
