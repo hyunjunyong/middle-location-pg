@@ -126,8 +126,9 @@ function getPositions() {
 
 //로컬 스토리지 positions 삭제
 
-$reset_address.addEventListener("click",
-    window.onbeforeunload = function deleteLocalstorage(){
+$reset_address.addEventListener("click",() => resetadd());
+
+function resetadd(){
     localStorage.removeItem('positions');
     window.location.reload();
-});
+}
