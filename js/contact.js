@@ -2,23 +2,26 @@ import getCenter from "./getCenter.js";
 let n = 0;
 //n값으로 시작위치와 중간지점의 교통정보 파악
 
-//중간거리가 없을 시 길찾기 페이지로 이동
-if (centerPosition.lon == NULL || positions == NULL) {
-  //
-  alert(
-    "중간거리가 없거나 주소를 입력하지 않으셨습니다. \n 확인버튼을 눌러주세요!"
-  );
-  document.location.href = "../about.html";
-}
-
 //각자의 위치 값 배열
 const positions = getPositions();
 
 function getPositions() {
   return JSON.parse(localStorage.getItem("positions"));
 }
+
 //positions의 중간위치 반환
 const centerPosition = getCenter(positions);
+
+//중간거리가 없을 시 길찾기 페이지로 이동
+if (positions == null) {
+
+  alert(
+    "중간거리가 없거나 주소를 입력하지 않으셨습니다. \n 확인버튼을 눌러주세요!"
+  );
+  document.location.href = "../about.html";
+}
+
+
 
 let markerPosition = [
   {
@@ -26,13 +29,6 @@ let markerPosition = [
     latlng: new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat),
   },
 ];
-// console.log(markerPosition);
-// positions.forEach((position) => {
-//   markerPosition.push({
-//     title: "시작위치",
-//     latlng: new kakao.maps.LatLng(position["Ma"], position["La"]),
-//   });
-// });
 
 for (let i in positions) {
   markerPosition.push({
