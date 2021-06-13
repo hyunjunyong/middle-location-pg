@@ -15,54 +15,57 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: #868e96;">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">혼디모영</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">길찾기</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="post.html">추천장소</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">대중교통</a>
-                    </li>
-                </ul>
-            </div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: white;border-bottom: solid 2px gray">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" style="color: #0069d9">혼디모앙</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"  href="index.html"style="color: #0069d9">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="about.html"style="color: #0069d9">길찾기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="post.html"style="color: #0069d9">추천장소</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" style="color: #0069d9">대중교통</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    <hr>
-    <section>
-        <div class="map_wrap">
-            <div id="map" style="width:100%;height:900px;position:relative;overflow:hidden;"></div>
+    </div>
+</nav>
 
-            <div id="menu_wrap" class="bg_white">
-                <div class="option">
-                    <div>
-                        <form onsubmit="searchPlaces(); return false;">
-                            키워드 : <input type="text" value="제주 시청 맛집" id="keyword" size="13">
-                            <button type="submit">검색하기</button><button onclick="button1_click()"><img src = "img/voice.png" height="10" width="15"></button>
-                        </form>
-                    </div>
+
+<!-- Page Header -->
+<header class="masthead" style="height: 68px; margin-bottom: 0;">
+    <div class="overlay"></div>
+</header>
+
+<section>
+    <div class="map_wrap">
+        <div id="map" style="width:100%;height:900px;position:relative;overflow:hidden;"></div>
+        <div id="menu_wrap" class="bg_white">
+            <div class="option">
+                <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                        키워드 : <input type="text" value="제주 시청 맛집" id="keyword" size="13">
+                        <button type="submit">검색하기</button><button onclick="button1_click()"><img src = "img/voice.png" height="10" width="15"></button>
+                    </form>
                 </div>
-                <hr>
-                <ul id="placesList"></ul>
-                <div id="pagination"></div>
             </div>
+            <hr>
+            <ul id="placesList"></ul>
+            <div id="pagination"></div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -71,7 +74,9 @@
     <script src="js/clean-blog.min.js"></script>
     <!-- Custom scripts for this template -->
     <script src="js/clean-blog.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>-->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56d841aa9be6126e11d8c9bc3921be9&libraries=services"></script>
+
     <script type="module" src="js/keyword.js"></script>
 </body>
 
