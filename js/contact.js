@@ -51,7 +51,7 @@ function bus() {
           content: `<div style="padding: 5px;">${markerPosition[0].title}</div>`,
         });
         var imageSrc =
-            "https://github.com/hyunjunyong/middle-location-pg/blob/main/img/pin (1).png?raw=true", // 마커이미지의 주소입니다
+            "https://github.com/hyunjunyong/middle-location-pg/blob/main/img/placeholder.png?raw=true", // 마커이미지의 주소입니다
           imageSize = new kakao.maps.Size(52, 58), // 마커이미지의 크기입니다
           imageOption = { offset: new kakao.maps.Point(28,57) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
