@@ -10,6 +10,13 @@ function getPositions() {
 }
 //positions의 중간위치 반환
 const centerPosition = getCenter(positions);
+
+//중간거리가 없을 시 길찾기 페이지로 이동
+if (centerPosition == NULL) {
+  //
+  alert("중간거리가 없습니다. \n 확인버튼을 눌러주세요!");
+  document.location.href = "about.html";
+}
 let markerPosition = [
   {
     title: "도착위치",
