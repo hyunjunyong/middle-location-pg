@@ -2,21 +2,13 @@ import getCenter from "./getCenter.js";
 let n = 0;
 //n값으로 시작위치와 중간지점의 교통정보 파악
 
-//중간거리가 없을 시 길찾기 페이지로 이동
-if (centerPosition.lon == NULL || positions == NULL) {
-  //
-  alert(
-    "중간거리가 없거나 주소를 입력하지 않으셨습니다. \n 확인버튼을 눌러주세요!"
-  );
-  document.location.href = "../about.html";
-}
-
 //각자의 위치 값 배열
 const positions = getPositions();
 
 function getPositions() {
   return JSON.parse(localStorage.getItem("positions"));
 }
+
 //positions의 중간위치 반환
 const centerPosition = getCenter(positions);
 
@@ -26,13 +18,6 @@ let markerPosition = [
     latlng: new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat),
   },
 ];
-// console.log(markerPosition);
-// positions.forEach((position) => {
-//   markerPosition.push({
-//     title: "시작위치",
-//     latlng: new kakao.maps.LatLng(position["Ma"], position["La"]),
-//   });
-// });
 
 for (let i in positions) {
   markerPosition.push({
@@ -66,9 +51,9 @@ function bus() {
           content: `<div style="padding: 5px;">${markerPosition[0].title}</div>`,
         });
         var imageSrc =
-            "https://github.com/hyunjunyong/middle-location-pg/blob/main/img/location%20(1).png?raw=true", // 마커이미지의 주소입니다
+            "https://github.com/hyunjunyong/middle-location-pg/blob/main/img/placeholder.png?raw=true", // 마커이미지의 주소입니다
           imageSize = new kakao.maps.Size(52, 58), // 마커이미지의 크기입니다
-          imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+          imageOption = { offset: new kakao.maps.Point(28,57) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
         var markerImage = new kakao.maps.MarkerImage(
@@ -150,7 +135,7 @@ function bus() {
 bus();
 //api 작동
 for (let i = 0; i < positions.length; i++) {
-  const colors = ["#ff0033", "#37ff00", "#ffc300", "#a600ff", "#FFC300FF"];
+  const colors = ["#FF7F00", "#d42424", "#30ffe7", "#80FF00", "#00FFFF","#0000FF","#8000FF","#FF00FF"];
   let selecetedColor = colors[i];
   var request = new XMLHttpRequest();
 
