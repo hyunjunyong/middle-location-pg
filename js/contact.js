@@ -135,7 +135,7 @@ function bus() {
 bus();
 //api 작동
 for (let i = 0; i < positions.length; i++) {
-  const colors = ["#ff0033", "#37ff00", "#ffc300", "#a600ff", "#FFC300FF"];
+  const colors = ["#FF7F00", "#FFFF00", "#ffc300", "#80FF00", "#00FFFF","#0000FF","#8000FF","#FF00FF"];
   let selecetedColor = colors[i];
   var request = new XMLHttpRequest();
 
