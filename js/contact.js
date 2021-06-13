@@ -12,10 +12,12 @@ function getPositions() {
 const centerPosition = getCenter(positions);
 
 //중간거리가 없을 시 길찾기 페이지로 이동
-if (centerPosition == NULL) {
+if (centerlon == NULL || positions == NULL) {
   //
-  alert("중간거리가 없습니다. \n 확인버튼을 눌러주세요!");
-  document.location.href = "about.html";
+  alert(
+    "중간거리가 없거나 주소를 입력하지 않으셨습니다. \n 확인버튼을 눌러주세요!"
+  );
+  document.location.href = "../about.html";
 }
 let markerPosition = [
   {
@@ -147,7 +149,7 @@ function bus() {
 bus();
 //api 작동
 for (let i = 0; i < positions.length; i++) {
-  const colors = ["#ff0033", "#37ff00", "#ffc300", "#a600ff","#FFC300FF"];
+  const colors = ["#ff0033", "#37ff00", "#ffc300", "#a600ff", "#FFC300FF"];
   let selecetedColor = colors[i];
   var request = new XMLHttpRequest();
 
