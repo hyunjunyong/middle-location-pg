@@ -42,15 +42,17 @@ function searchPlaces() {
     let geocoder = new kakao.maps.services.Geocoder();
     let coord = new kakao.maps.LatLng(middlelon, middlelat);
     let callback = function (result, status) {
-      var keyword = (document.getElementById("keyword").value =
-        result[0].address.address_name + " 맛집");
-      if (!keyword.replace(/^\s+|\s+$/g, "")) {
-        alert("키워드를 입력해주세요!");
-        return false;
-      }
+      if (status === kakao.maps.services.Status.OK) {
+        var keyword = (document.getElementById("keyword").value =
+          result[0].address.address_name + " 맛집");
+        if (!keyword.replace(/^\s+|\s+$/g, "")) {
+          alert("키워드를 입력해주세요!");
+          return false;
+        }
 
-      // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-      ps.keywordSearch(keyword, placesSearchCB);
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch(keyword, placesSearchCB);
+      }
     };
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
   }
