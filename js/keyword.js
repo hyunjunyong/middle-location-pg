@@ -43,8 +43,9 @@ function searchPlaces() {
     let coord = new kakao.maps.LatLng(middlelon, middlelat);
     let callback = function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
+        document.getElementById("keyword").value =
+          result[0].address.address_name + " 맛집";
         var keyword = document.getElementById("keyword").value;
-        keyword = result[0].address.address_name + " 맛집";
         if (!keyword.replace(/^\s+|\s+$/g, "")) {
           alert("키워드를 입력해주세요!");
           return false;
