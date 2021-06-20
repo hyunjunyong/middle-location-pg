@@ -8,7 +8,6 @@ const positions = getPositions();
 function getPositions() {
   return JSON.parse(localStorage.getItem("positions"));
 }
-
 //positions의 중간위치 반환
 const centerPosition = getCenter(positions);
 
@@ -222,7 +221,6 @@ function searchBusLaneAJAX() {
       const data = xhr.responseText;
       const busPath = JSON.parse(data);
 
-      console.log(busPath);
       const $toggleBtn =
         "<img\n" +
         '                  src="img/down-arrow.png"\n' +
@@ -276,7 +274,6 @@ function searchBusLaneAJAX() {
         $toggleBtn;
       $(".howManyStation").html(stationNumNode);
 
-      console.log(stations);
       for (let i in stations) {
         stationName1 += `<div style="padding-left: 15px;">${stations[i].stationName}</div>`;
       }
