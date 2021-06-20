@@ -1,4 +1,5 @@
 import getCenter from "./getCenter.js";
+// import resetadd from "./resetAddress.js";
 
 const $add1 = document.getElementById('add1');
 const $add2 = document.getElementById('add2');
@@ -7,10 +8,11 @@ const $btn2 = document.getElementById('button-addon2');
 const url = "https://dapi.kakao.com/v2/local/search/address.json";
 const headers = { Authorization: " KakaoAK 9434c60fa9c26e7c4f5c81801f763f04" };
 const $reset_address = document.getElementById('reset_address');
-
+const $midBtn = document.getElementById("mid-btn");
 
 $btn1.addEventListener("click", () => searchaddname($add1));
 $btn2.addEventListener("click", () => searchaddname($add2));
+$reset_address.addEventListener("click",() => resetadd());//"초기화" 클릭 시 로컬스토리지 positions  삭제
 
 //지도
 var mapContainer = document.getElementById('map'),
@@ -97,7 +99,7 @@ function savePosition(adrress) {
     localStorage.setItem("positions", JSON.stringify(isExist))
 }
 
-const $midBtn = document.getElementById("mid-btn");
+
 $midBtn.addEventListener("click", () => {
     const centerPosition = getCenter(getPositions());
     let markerPosition = new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat);
@@ -124,9 +126,9 @@ function getPositions() {
     return JSON.parse(localStorage.getItem('positions'));
 }
 
-//로컬 스토리지 positions 삭제
 
-$reset_address.addEventListener("click",() => resetadd());
+
+
 
 function resetadd(){
     localStorage.removeItem('positions');
