@@ -1,19 +1,9 @@
-import getCenter from "./getCenter.js";
-
-const centerPosition = getCenter(getPositions());
-let markerPosition = new kakao.maps.LatLng(
-  centerPosition.lon,
-  centerPosition.lat
-);
-let middlelon = centerPosition.lon;
-let middlelat = centerPosition.lat;
-
 // 마커를 담을 배열입니다
 var markers = [];
 
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
   mapOption = {
-    center: new kakao.maps.LatLng(33.498528071364554, 126.53022090514855), // 지도의 중심좌표
+    center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
     level: 3, // 지도의 확대 레벨
   };
 
@@ -23,12 +13,6 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-// searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
@@ -37,44 +21,16 @@ searchPlaces();
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
-  //좌표로 주소 나타내는 함수
-  function getAddr(lon, lat) {
-    let geocoder = new kakao.maps.services.Geocoder();
-    let coord = new kakao.maps.LatLng(middlelon, middlelat);
-    let callback = function (result, status) {
-      if (status === kakao.maps.services.Status.OK) {
-        var keyword = (document.getElementById("keyword").value =
-          result[0].address.address_name + " 맛집");
-        if (!keyword.replace(/^\s+|\s+$/g, "")) {
-          alert("키워드를 입력해주세요!");
-          return false;
-        }
+  var keyword = document.getElementById("keyword").value;
 
-        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-        ps.keywordSearch(keyword, placesSearchCB);
-      }
-    };
-    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+  if (!keyword.replace(/^\s+|\s+$/g, "")) {
+    alert("키워드를 입력해주세요!");
+    return false;
   }
-  getAddr(middlelon, middlelat);
-  // var keyword = document.getElementById('keyword').value = result[0].address.address_name + "맛집";
 
-  // if (!keyword.replace(/^\s+|\s+$/g, '')) {
-  //     alert('키워드를 입력해주세요!');
-  //     return false;
-  // }
-
-  // // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-  // ps.keywordSearch(keyword, placesSearchCB);
-
-  // if(서버에서 변수 받을시){
-  //     ps.keywordSearch(middlekey, placesSearchCB);
-  // }
-  // else(){
-  //     ps.keywordSearch(keyword, placesSearchCB);
-  // }
+  // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+  ps.keywordSearch(keyword, placesSearchCB);
 }
-//if문 사용으로 db서버에서 중간거리 검색하면 middlekey변수 사용 , 아닐 시 keyword 사용
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
@@ -258,33 +214,5 @@ function removeAllChildNods(el) {
     el.removeChild(el.lastChild);
   }
 }
-
-function searchAddrFromCoords(coords, callback) {
-  // 좌표로 행정동 주소 정보를 요청합니다
-  geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-}
-
-function searchDetailAddrFromCoords(coords, callback) {
-  // 좌표로 법정동 상세 주소 정보를 요청합니다
-  geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
-
-// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-function displayCenterInfo(result, status) {
-  if (status === kakao.maps.services.Status.OK) {
-    for (var i = 0; i < result.length; i++) {
-      // 행정동의 region_type 값은 'H' 이므로
-      if (result[i].region_type === "H") {
-        console.log(result[i].address_name);
-        break;
-      }
-    }
-  }
-}
-
-function getPositions() {
-  return JSON.parse(localStorage.getItem("positions"));
-}
-
 //자바스크립트 키 	  4c05f28c3666370ccfaebb792a906924
 //rest api 키   d31218ac34bbbf3c0861ad725ba4f24d

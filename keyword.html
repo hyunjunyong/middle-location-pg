@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
+    <title>키워드로 장소검색하고 목록으로 표출하기</title>
+    <meta charset="utf-8">
+    <title>혼디모영</title>
     <link rel="stylesheet" href="css/keyword.css">
-    <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-
 </head>
-
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: white;border-bottom: solid 2px gray">
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" STYLE="background-color: white;border-bottom: solid 2px gray">
     <div class="container">
-        <a class="navbar-brand" href="index.html" style="color: #0069d9">혼디모앙</a>
+        <a class="navbar-brand" href="index.html" style="color: #0069d9;">혼디모앙</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -41,21 +41,15 @@
         </div>
     </div>
 </nav>
-
-
-<!-- Page Header -->
-<header class="masthead" style="height: 68px; margin-bottom: 0;">
-    <div class="overlay"></div>
-</header>
-
 <section>
-    <div class="map_wrap">
+    <div class="map_wrap" >
         <div id="map" style="width:100%;height:900px;position:relative;overflow:hidden;"></div>
+
         <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        키워드 : <input type="text" value="제주 시청 맛집" id="keyword" size="16">
+                        키워드 : <input type="text" value="제주 시청 맛집" id="keyword" size="15">
                         <button type="submit">검색하기</button>
                     </form>
                 </div>
@@ -66,18 +60,8 @@
         </div>
     </div>
 </section>
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
-<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e31eec4e98525fe454b4676d346042ae&libraries=services"></script>-->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56d841aa9be6126e11d8c9bc3921be9&libraries=services"></script>
-
-    <script type="module" src="js/keyword.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4c05f28c3666370ccfaebb792a906924&libraries=services"></script>
+<script src = "js/keyword.js"></script>
+<script type="module" src = "js/keywordmid.js"></script>
 </body>
-
 </html>
