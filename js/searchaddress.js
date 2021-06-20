@@ -1,5 +1,8 @@
-import getCenter from "./getCenter.js";
-// import resetadd from "./resetAddress.js";
+import getCenter from "./component/getCenter.js";
+import resetadd from "./component/resetAddress.js";
+import getPositions from "./component/getPosition.js";
+import makeForm from "./component/makeForm.js";
+import savePosition from "./component/savePosition.js";
 
 const $add1 = document.getElementById("add1");
 const $add2 = document.getElementById("add2");
@@ -7,7 +10,9 @@ const $btn1 = document.getElementById("button-addon1");
 const $btn2 = document.getElementById("button-addon2");
 const $reset_address = document.getElementById("reset_address");
 const $midBtn = document.getElementById("mid-btn");
+const $moreBtn = document.getElementById("more-button");
 
+$moreBtn.addEventListener("click", makeForm);//더보기 버튼 클릭시 주소 검색 폼 추가
 $btn1.addEventListener("click", () => searchaddname($add1));
 $btn2.addEventListener("click", () => searchaddname($add2));
 $reset_address.addEventListener("click", () => resetadd()); //"초기화" 클릭 시 로컬스토리지 positions  삭제
@@ -73,9 +78,7 @@ function drawMarker(json) {
   );
 }
 
-//더보기 버튼 클릭시 주소 검색 폼 추가
-const $moreBtn = document.getElementById("more-button");
-$moreBtn.addEventListener("click", makeForm);
+
 
 $midBtn.addEventListener("click", () => {
   const centerPosition = getCenter(getPositions());
