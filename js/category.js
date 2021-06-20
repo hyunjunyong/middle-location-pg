@@ -1,4 +1,4 @@
-import getCenter from "./getCenter.js";
+import getCenter from "./component/getCenter.js";
 
 const centerPosition = getCenter(getPositions());
 let markerPosition = new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat);

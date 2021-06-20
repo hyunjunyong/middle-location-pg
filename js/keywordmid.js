@@ -1,4 +1,4 @@
-import getCenter from "./getCenter.js";
+import getCenter from "./component/getCenter.js";
 
 //각자의 위치 값 배열
 const positions = getPositions();

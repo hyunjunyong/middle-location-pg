@@ -1,4 +1,4 @@
-import getCenter from "./getCenter.js";
+import getCenter from "./component/getCenter.js";
 let n = 0;
 //n값으로 시작위치와 중간지점의 교통정보 파악
 
