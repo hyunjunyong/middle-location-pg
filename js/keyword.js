@@ -214,5 +214,3 @@ function removeAllChildNods(el) {
     el.removeChild(el.lastChild);
   }
 }
-//자바스크립트 키 	  4c05f28c3666370ccfaebb792a906924
-//rest api 키   d31218ac34bbbf3c0861ad725ba4f24d
