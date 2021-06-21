@@ -1,7 +1,6 @@
 import getCenter from "./component/getCenter.js";
 import resetadd from "./component/resetAddress.js";
 import getPositions from "./component/getPosition.js";
-import makeForm from "./component/makeForm.js";
 import savePosition from "./component/savePosition.js";
 
 const $add1 = document.getElementById("add1");
@@ -105,3 +104,15 @@ $midBtn.addEventListener("click", () => {
   //중간위치 마커로 지도 이동
   map.setCenter(new kakao.maps.LatLng(centerPosition.lon, centerPosition.lat));
 });
+
+
+function makeForm() {
+  const $addressFormBtn = document.querySelector(".address-form-group");
+  const div = document.createElement("div");
+  div.setAttribute('class', 'input-group mb-3');
+  div.innerHTML = '<input type="text" class="form-control" aria-label="Recipient\'s username"aria-describedby="button-addon2"> <button class="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>'
+  $addressFormBtn.appendChild(div);
+  const $addedInput = document.querySelector(".input-group:last-child.input-group input");
+  const $addedSearchBtn = document.querySelector(".input-group:last-child.input-group button");
+  $addedSearchBtn.addEventListener("click", () => searchaddname($addedInput));
+}

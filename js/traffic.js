@@ -6,9 +6,10 @@ import makeOutListener from "./component/makeOutListener.js";
 let n = 0;
 
 const positions = getPositions();
-//positions의 중간위치 반환
-const centerPosition = getCenter(positions);
 
+const centerPosition = getCenter(positions);//positions의 중간위치 반환
+
+//시작, 도착위치에 마커 생성
 let markerPosition = [
   {
     title: "도착위치",
@@ -22,6 +23,7 @@ for (let i in positions) {
     latlng: new kakao.maps.LatLng(positions[i]["Ma"], positions[i]["La"]),
   });
 }
+
 
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
   mapOption = {
