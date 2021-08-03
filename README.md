@@ -14,6 +14,5 @@ https://hyunjunyong.github.io/middle-location-pg/
 
 * * *
 사용 스택
-[css3.pdf](https://github.com/hyunjunyong/middle-location-pg/files/6921905/css3.pdf)
-[html5.pdf](https://github.com/hyunjunyong/middle-location-pg/files/6921906/html5.pdf)
-[javascript.pdf](https://github.com/hyunjunyong/middle-location-pg/files/6921907/javascript.pdf)
+<img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>&nbsp 
+<img src="https://img.shields.io/badge/css-1572B6?style=flat-square&logo=css3&logoColor=white"/></a>&nbsp 
