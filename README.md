@@ -16,4 +16,4 @@ https://hyunjunyong.github.io/middle-location-pg/
 사용 스택
 <img src="https://img.shields.io/badge/Javascript-ffb13b?style=flat-square&logo=javascript&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/css-1572B6?style=flat-square&logo=css3&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/HTML5-blueviolet?style=flat-square&logo-test-blue?logo=html5&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/HTML5-blueviolet?style=flat-square&logo=html5&logoColor=white"/></a>
