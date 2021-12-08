@@ -15,20 +15,20 @@ https://hyunjunyong.github.io/middle-location-pg/
     대중교통(버스) 추천 기능
     
 ## 메인화면
-<img width="1277" alt="스크린샷 2021-12-08 오후 11 05 13" src="https://user-images.githubusercontent.com/26618280/145222818-74598109-e716-48d2-adb7-fbe76ee706c3.png">
+<img width="700" alt="스크린샷 2021-12-08 오후 11 05 13" src="https://user-images.githubusercontent.com/26618280/145222818-74598109-e716-48d2-adb7-fbe76ee706c3.png">
 
 ## 중간거리 찾기
 * 사용자들의 주소 입력
 * 주소를 초기화 가능하며 중간거리를 찾을 수 있음(로컬스토리지 이용)
-<img width="1470" alt="스크린샷 2021-12-08 오후 11 06 00" src="https://user-images.githubusercontent.com/26618280/145222834-0ce8496f-28fc-4722-a778-bafcbd114f9f.png">
+<img width="700" alt="스크린샷 2021-12-08 오후 11 06 00" src="https://user-images.githubusercontent.com/26618280/145222834-0ce8496f-28fc-4722-a778-bafcbd114f9f.png">
 
 ## 추천장소
 * 키워드와 카테고리로 장소를 추천받음
-<img width="1228" alt="스크린샷 2021-12-08 오후 11 06 25" src="https://user-images.githubusercontent.com/26618280/145222847-f118c43f-1d7d-470b-9fcb-5d19149ad0e4.png">
+<img width="700" alt="스크린샷 2021-12-08 오후 11 06 25" src="https://user-images.githubusercontent.com/26618280/145222847-f118c43f-1d7d-470b-9fcb-5d19149ad0e4.png">
 
 ## 교통편
 * 찾은 중간위치를  토대로 사용자와 중간위치 거리 버스편을 찾아줌
-<img width="1468" alt="스크린샷 2021-12-08 오후 11 06 39" src="https://user-images.githubusercontent.com/26618280/145222849-ff57bf37-a759-471a-bf89-741e4444db77.png">
+<img width="700" alt="스크린샷 2021-12-08 오후 11 06 39" src="https://user-images.githubusercontent.com/26618280/145222849-ff57bf37-a759-471a-bf89-741e4444db77.png">
 
 
 
